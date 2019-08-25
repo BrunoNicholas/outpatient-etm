@@ -29,72 +29,67 @@
             <div class="clearfix"></div>
             <!-- BEGIN SIDEBAR MENU -->
             <ul id="menu" class="page-sidebar-menu">
-                @role(['super-admin','pno_admin'])
-                    <li class="text-center">
-                        <a href="{{ route('admin') }}">
-                            <!-- <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> -->
-                            <span class="title"><b>Admin Dashboard</b></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="users" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
-                            <span class="title">System Users</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('users.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> All Users
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Admins
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('users.create') }}">
-                                    <i class="fa fa-angle-double-right"></i> Add User
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Teams
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Assign User Tasks
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="lock" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
-                            <span class="title">Roles & Permissions</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('roles.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> System Roles
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('permissions') }}">
-                                    <i class="fa fa-angle-double-right"></i> Permissions
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('roles.create') }}">
-                                    <i class="fa fa-angle-double-right"></i> Add Role
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endrole
+                <li class="text-center">
+                    <span class="title"><b>START</b></span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="livicon" data-name="users" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
+                        <span class="title">System Users</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{ route('users.index') }}">
+                                <i class="fa fa-angle-double-right"></i> All Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-angle-double-right"></i> Admins
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.create') }}">
+                                <i class="fa fa-angle-double-right"></i> Add User
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-angle-double-right"></i> Teams
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-angle-double-right"></i> Assign User Tasks
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="livicon" data-name="lock" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
+                        <span class="title">Roles & Permissions</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{ route('roles.index') }}">
+                                <i class="fa fa-angle-double-right"></i> System Roles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('permissions') }}">
+                                <i class="fa fa-angle-double-right"></i> Permissions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('roles.create') }}">
+                                <i class="fa fa-angle-double-right"></i> Add Role
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @role(['super-admin','admin','pno','pno_admin'])
                     <li class="text-center">
                         <a href="{{ route('home') }}">

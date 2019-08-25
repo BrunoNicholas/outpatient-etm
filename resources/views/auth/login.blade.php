@@ -19,7 +19,7 @@
                         <div class="input-group-addon{{ $errors->has('email') ? ' has-error' : '' }}">
                             <i class="livicon" data-name="mail" data-size="18" data-c="#484848" data-hc="#484848" data-loop="true"></i>
                         </div>
-                        <input class="form-control" placeholder="E-mail" type="text"  name="email" value="{{ old('email') }}" required autofocus>
+                        <input class="form-control" placeholder="Your E-mail" type="text"  name="email" value="{{ old('email') }}" required autofocus>
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -30,7 +30,7 @@
                         <div class="input-group-addon{{ $errors->has('password') ? ' has-error' : '' }}">
                             <i class="livicon" data-name="key" data-size="18" data-c="#484848" data-hc="#484848" data-loop="true"></i>
                         </div>
-                        <input class="form-control" type="password"  name="password" required>
+                        <input class="form-control" type="password" placeholder="Your Password" name="password" required>
                         @if ($errors->has('password'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -46,17 +46,14 @@
                 </fieldset>
                 <hr>
                 <fieldset>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="{{ route('password.request') }}" class="btn btn-md btn-warning btn-block">Forgort Password</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="{{ route('register') }}" class="btn btn-md btn-info btn-block">Register</a>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{{ route('password.request') }}" class="btn btn-md btn-warning btn-block">Forgort Password</a>
                         </div>
-                    </div>
-                    
+                        <div class="col-md-6">
+                            <a href="{{ route('register') }}" class="btn btn-md btn-info btn-block">Register</a>
+                        </div>
+                    </div>                    
                 </fieldset>
             </form>
         </div>

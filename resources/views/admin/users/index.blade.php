@@ -41,7 +41,7 @@
                 <div class="panel-heading clearfix  ">
                     <div class="panel-title pull-left">
                         <div class="caption">
-                            <i class="livicon" data-name="users" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> All System Users
+                            <i class="livicon" data-name="users" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> All System Users <a href="{{ route('users.create') }}"><button class="btn btn-xs btn-warning btn-round"><i class="fa fa-plus"></i> Add New</button></a>
                         </div>
                     </div>
                     <div class="tools pull-right"></div>

@@ -17,8 +17,8 @@ class CreateDiseaseCasesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('disease_id')->unsigned()->onDelete('cascade');
-            $table->string('case_id');
             $table->string('trmt_plan');
+            $table->string('case_id');
             $table->text('description');
             $table->string('status');
             $table->timestamps();
