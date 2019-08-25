@@ -20,8 +20,52 @@ Route::get('/public', function () {
 });
 
 Auth::routes(['verify' => true]);
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'	=> 'admin', 'middleware'	=> ['auth','verified']], function()
+{
+	Route::resource('/users', 'UserController');
+});
+
+Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function(){
+	Route::resource('incidents', 'IncidentController');
+	Route::resource('/{type}/messages', 'MessageController');
+	Route::resource('structure/departments/projects', 'ProjectController');
+	Route::resource('/questions', 'QuestionController');
+	Route::resource('projects/posts', 'PostController');
+	Route::resource('structure/departments', 'DepartmentController');
+	Route::resource('structure/reports', 'ReportsController');
+	Route::resource('setings/{type}/{id}/comments', 'CommentController');
+	/**
+	 * Route Closures
+	 */
+
+	Route::post('/{type}/message', [
+		'as'	=> 'messages.storeAll',
+		'uses'	=> 'MessageController@storeAll'
+	]);
+
+	Route::get('/user', [
+		'as' 	=> 'home.user',
+		'uses'	=> 'UserPageController@home',
+	]);
+	Route::get('/user/profile/settings', [
+		'as' 	=> 'settings',
+		'uses'	=> 'UserPageController@settings',
+	]);
+	Route::get('/user/profile', [
+		'as' 	=> 'profile',
+		'uses'	=> 'UserPageController@profile',
+	]);
+	Route::post('/user/profile', [
+		'as'	=> 'profile.update',
+		'uses'	=> 'UserPageController@update_image'
+	]);
+	Route::post('/user/password/profile', [
+		'as'	=> 'password.update',
+		'uses'	=> 'UserController@changePassword'
+	]);
+});
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::resource('/home/admin/users', 'UserController');
@@ -96,6 +140,3 @@ Route::group(['middleware' => 'web'], function(){
 	]);
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -30,70 +30,34 @@
             <!-- BEGIN SIDEBAR MENU -->
             <ul id="menu" class="page-sidebar-menu">
                 <li class="text-center">
-                    <span class="title"><b>START</b></span>
+                    <span class="title"><b style="color: #fff;"> <i class="fa fa-dashboard"></i> START </b></span>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="livicon" data-name="users" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
-                        <span class="title">System Users</span>
+                        <i class="livicon" data-name="home" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
+                        <span class="title"> Home Starts </span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="{{ route('users.index') }}">
-                                <i class="fa fa-angle-double-right"></i> All Users
+                            <a href="{{ route('home') }}">
+                                <i class="fa fa-angle-double-right"></i> Home
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fa fa-angle-double-right"></i> Admins
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('users.create') }}">
-                                <i class="fa fa-angle-double-right"></i> Add User
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-angle-double-right"></i> Teams
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-angle-double-right"></i> Assign User Tasks
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="livicon" data-name="lock" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
-                        <span class="title">Roles & Permissions</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="{{ route('roles.index') }}">
-                                <i class="fa fa-angle-double-right"></i> System Roles
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('permissions') }}">
-                                <i class="fa fa-angle-double-right"></i> Permissions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('roles.create') }}">
-                                <i class="fa fa-angle-double-right"></i> Add Role
+                            <a href="{{ route('admin') }}">
+                                <i class="fa fa-angle-double-right"></i> Administrator
                             </a>
                         </li>
                     </ul>
                 </li>
                 @role(['super-admin','admin','pno','pno_admin'])
                     <li class="text-center">
-                        <a href="{{ route('home') }}">
-                            <span class="title"><!-- <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>--> <b style="color: #F89A14;">Home</b></span>
+                        <a href="javascript:void(0)">
+                            <span class="title">
+                                {{-- <i class="livicon" data-name="user" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> --}}
+                                <b style="color: #F89A14;"><i class="fa-user fa" style="color: #fff;"></i> PERSONAL </b>
+                            </span>
                         </a>
                     </li>
                 @endrole
@@ -101,28 +65,24 @@
                     <li>
                         <a href="#">
                             <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
-                            <span class="title">Projects & Tracker</span>
+                            <span class="title"> Settings &amp;Profile </span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
                             <li>
                                 <a href="">
-                                    <i class="fa fa-angle-double-right"></i> On going Projects
+                                    <i class="fa fa-angle-double-right"></i> Inbox
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Finished Projects
+                                <a href="{{ route('profile') }}">
+                                    <i class="fa fa-angle-double-right"></i> My Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> All Projects
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Pattern Tracker
+                                <a href="javascript:void(0)" onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-angle-double-right"></i> Logout
                                 </a>
                             </li>
                         </ul>
@@ -156,9 +116,9 @@
                 @endrole
                 @role(['super-admin','admin','pno','pno_admin'])
                     <li class="text-center">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <!-- <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> -->
-                            <span class="title"><b style="color: #F89A14;">Principle Nursing Officer</b></span>
+                            <span class="title"><b style="color: #F89A14;">SYSTEM</b></span>
                         </a>
                     </li>
                     <li>
