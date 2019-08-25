@@ -17,10 +17,9 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-    	$users = User::all();
-        $roles = Role::all();
-        $chats = Chat::all();
-        return View('admin.index',compact(['users','roles','chats']));
+    	$users = User::latest()->paginate();
+        $roles = Role::latest()->paginate();
+        return View('admin.index',compact(['users','roles']));
     }
 
     /**

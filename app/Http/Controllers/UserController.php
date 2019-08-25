@@ -3,21 +3,73 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Display the constructor of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-   public function index()
+    public function __construct()
+    {
+        $this->middleware('role:super-admin|admin')->except('update','changePassword','show');
+    }
+
+    /**
+     * Change the password of the current user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(Request $request)
+    {
+        request()->validate([
+            'id'                =>  'required',
+            'previous_password' =>  'required|min:6',
+            'password'          =>  'required|min:6',
+        ]);
+
+        $user = User::find($request->id);
+
+        if ($request->id != Auth::user()->id) {
+            if (condition) {
+                return redirect()->route('profile',compact(['user']))->with('danger','C\'mon you cannot change another person\'s password!');
+            }
+        }else {
+            if ($request->confirm_password != $request->password) {
+                return redirect()->route('profile',compact(['user']))->with('info','Your newly created passwords do not match!!!');
+            }
+            else{
+                if (Hash::check($request->previous_password, Auth::user()->password)) {
+                    $user = User::find($request->id);
+                    $user->password = Hash::make($request->password);
+                    $user->save();
+
+                    return redirect()->route('profile',compact(['user']))->with('success','Your password has beeen updated successfully!');
+                }
+                else{
+                    return redirect()->route('profile',compact(['user']))->with('warning','Your old password does not match our records!');
+                }
+            }
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
         $roles = Role::all();
-        $users = User::all();
+        $users = User::latest()->paginate();
         return view('admin.users.index', compact(['users','roles']));
     }
 
@@ -43,9 +95,7 @@ class UserController extends Controller
         request()->validate([
             'name'      => 'required',
             'email'     => 'required',
-            'telephone' => 'required',
-            'role'      => 'required',
-            'status'    => 'required',
+            'role' => 'required',
 
         ]);
         $user = User::create($request->all());
@@ -66,6 +116,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('danger', 'User Not Found!');
+        }
         return view('admin.users.show', compact('user'));
     }
 
@@ -79,6 +132,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roles = Role::all();
+        if (!$user) {
+            return redirect()->route('users.index')->with('danger', 'User Not Found!');
+        }
         return view('admin.users.edit', compact('user','roles'));
     }
 
@@ -94,18 +150,17 @@ class UserController extends Controller
         request()->validate([
             'name'      =>  'required',
             'email'     =>  'required',
-            'telephone' =>  'required',
             'role'      =>  'required',
         ]);
         
         User::find($id)->update($request->all());
-        
-        $user = User::find($id);
 
         DB::table('role_user')->where('user_id',$id)->delete();
 
-        $user->attachRole(Role::where('name',($request->role))->first());
-
+        User::find($id)->attachRole(Role::where('name',($request->role))->first());
+        if ($request->router) {
+            return redirect()->route($request->router)->with('success','Your profile has been updated successfully!');
+        }
         return redirect()->route('users.index')->with('success','User Updated Successfully');
     }
 
@@ -119,6 +174,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User Profile Deleted Successfully');
+        DB::table('role_user')->where('user_id',$id)->delete();
+        return redirect()->route('users.index')->with('danger', 'User Profile Deleted Successfully');
     }
 }

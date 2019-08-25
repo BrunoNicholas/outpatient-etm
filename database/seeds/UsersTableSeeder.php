@@ -14,11 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('role_user');
+
         $user_super = new User();
         $user_super->name = 'Bruno Nicholas';
         $user_super->email = 'sbnibro256@gmail.com';
         $user_super->password = bcrypt('dollar');
-        $user_super->age = 100;
         $user_super->gender = 'Male';
         $user_super->telephone = '0782407042';
         $user_super->location = 'Mutungo';
@@ -26,11 +27,12 @@ class UsersTableSeeder extends Seeder
         $user_super->status = 'Active';
         $user_super->save();
 
+        $user_super->attachRole(Role::where('name','super-admin')->first());
+
         $user_admin = new User();
         $user_admin->name = 'Kaye Francis';
         $user_admin->email = 'kayefrancis05@gmail.com';
         $user_admin->password = bcrypt('dollar');
-        $user_admin->age = 50;
         $user_admin->gender = 'Male';
         $user_admin->telephone = '';
         $user_admin->location = 'Mutungo';
@@ -38,9 +40,6 @@ class UsersTableSeeder extends Seeder
         $user_admin->status = 'Active';
         $user_admin->save();
 
-        DB::table('role_user');
-
         $user_admin->attachRole(Role::where('name','admin')->first());
-        $user_super->attachRole(Role::where('name','super-admin')->first());
     }
 }
