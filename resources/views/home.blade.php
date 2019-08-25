@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title') {{ Auth::user()->name }} - Home @endsection
+@section('title') Home @endsection
 @section('location')
     <h1>Welcome to your Dashboard</h1>
     <ol class="breadcrumb">
