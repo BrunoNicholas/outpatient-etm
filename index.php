@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>OUTPATIENT SOFTWARE | ETM - Pro</title>
-	<link href="public/app/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/public/app/css/bootstrap.min.css" rel="stylesheet" />
 	<style type="text/css">
 		body {
 			margin-left: 15%;
@@ -19,7 +19,7 @@
 					
 				</div>
 				<div class="col-lg-3 text-center">
-					<a href="/etm_pro/public">
+					<a href="/public">
 						<button class="btn btn-primary btn-block">Continue to Site!</button>
 					</a>
 				</div>

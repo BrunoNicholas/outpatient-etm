@@ -84,7 +84,7 @@
                 -->
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" value="Remember Me" class="minimal-blue"> I agree to the <a href="">Terms &amp; Conditions</a>
+                            <input type="checkbox" value="Remember Me" class="minimal-blue"> I agree to the <a href="javascript:void(0)">Terms &amp; Conditions</a>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
