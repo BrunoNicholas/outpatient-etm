@@ -30,7 +30,54 @@
     @include('layouts.includes.notifications')
 	<div class="row ">
         <div class="col-md-10 col-sm-8">
-        	
+        	<div class="panel panel-danger filterable">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left">
+                        <i class="livicon" data-name="bug" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Disease Cases Records
+                    </h3>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-striped table-bordered" id="table1">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Case Name</th>
+                                <th>Disease Record</th>
+                                <th>Treatment</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Case Name</th>
+                                <th>Disease Record</th>
+                                <th>Treatment</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <?php $i=0; ?>
+                            @foreach($cases as $case)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $case->case_name }}</td>
+                                    <td>{{ $case->disease_id }}</td>
+                                    <td>{{ $case->treatment_plan }}</td>
+                                    <td><textarea class="form-control" style="border: none;">{{ $case->description }}</textarea></td>
+                                    <td style="width: 200px;">
+                                        <a href="{{ route('cases.show', $case->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View Details</a>
+                                        <a href="{{ route('cases.edit', $case->id) }}" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit Record</a>
+                                    </td>
+                                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="col-md-2 col-sm-8">
         	<div class="panel panel-danger filterable">
