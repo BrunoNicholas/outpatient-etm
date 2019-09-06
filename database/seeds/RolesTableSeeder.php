@@ -63,6 +63,12 @@ class RolesTableSeeder extends Seeder
         $role_->description = 'The system receptionist';
         $role_->save();
 
+        $role_subscriber = new Role();
+        $role_subscriber->name = "subscriber";
+        $role_subscriber->display_name = "Subscriber";
+        $role_subscriber->description = "A user subscribed to ". config('app.name');
+        $role_subscriber->save();
+
         $role_sub = new Role();
         $role_sub->name = 'client';
         $role_sub->display_name = 'Client';

@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
             $table->integer('project_id')->unsigned();
             $table->integer('team_id')->unsigned();
             $table->integer('team_members')->default(1)->nullable();
+            $table->integer('user_id')->unsigned();
             $table->string('topic');
             $table->string('description')->nullable();
             $table->string('status')->default('pending');
@@ -26,6 +27,7 @@ class CreateTasksTable extends Migration
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

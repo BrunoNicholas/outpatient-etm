@@ -15,17 +15,17 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('case_id')->unsigned()->onDelete('cascade');
-            $table->string('start_date');
-            $table->string('end_date');
-            $table->integer('supervisor')->unsigned()->onDelete('cascade');
-            $table->text('description');
-            $table->string('status');
+            $table->string('project_name');
+            $table->integer('disease_case_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
 
-            $table->foreign('case_id')->references('id')->on('disease_cases')->onDelete('cascade');
-            $table->foreign('supervisor')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('disease_case_id')->references('id')->on('disease_cases')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

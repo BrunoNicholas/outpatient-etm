@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DiseaseCase;
 
 class Project extends Model
 {
@@ -16,7 +17,7 @@ class Project extends Model
         'case_id',  	// from disease_cases table
         'start_date',
         'end_date',
-        'supervisor',
+        'user_id',
         'description',
         'status',
     ];
@@ -27,4 +28,24 @@ class Project extends Model
      * @var array
      */
     protected $table = 'projects';
+
+    /**
+     * Belonds to relationship connects both
+     * the users table to this table
+     *
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Belonds to relationship connects both
+     * the disease_cases table to this table
+     *
+     */
+    public function disease_cases()
+    {
+        return $this->belongsTo(DiseaseCase::class);
+    }
 }

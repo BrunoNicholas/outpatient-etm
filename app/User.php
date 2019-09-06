@@ -11,6 +11,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\Models\Message;
 use App\Models\Leave;
 use App\Models\Activity;
+use App\Models\Team;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -79,5 +80,15 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function activities()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    /**
+     * The relationship method for user activities.
+     *
+     * as teams activities.
+     */
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Activity;
 use App\Models\Project;
+use App\Models\Team;
 use App\User;
 
 class Tasks extends Model
@@ -19,6 +20,7 @@ class Tasks extends Model
     	'project_id',
     	'topic',
     	'team_id',
+        'user_id',
     	'team_members'
     	'description',
     	'status',
@@ -59,5 +61,15 @@ class Tasks extends Model
     public function projects()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    /**
+     * Belonds to relationship connects both
+     * the teams table to this table
+     *
+     */
+    public function teams()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

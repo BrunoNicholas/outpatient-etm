@@ -15,12 +15,12 @@ class CreateDiseaseCasesTable extends Migration
     {
         Schema::create('disease_cases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('disease_id')->unsigned()->onDelete('cascade');
-            $table->string('trmt_plan');
-            $table->string('case_id');
-            $table->text('description');
-            $table->string('status');
+            $table->string('case_name');
+            $table->integer('disease_id')->unsigned();
+            $table->string('treatment_plan')->nullable();
+            $table->string('case_id')->nullable();
+            $table->text('description')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('disease_id')->references('id')->on('diseases');

@@ -15,10 +15,10 @@ class CreateDiseasesTable extends Migration
     {
         Schema::create('diseases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('disease_name');
             $table->integer('frequency')->default(0)->nullable();
             $table->text('description')->nullable();
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Team extends Model
 {
@@ -12,8 +13,8 @@ class Team extends Model
      * @var array
      */
     protected $fillable = [
-    	'name',
-    	'supervisor',
+    	'team_name',
+    	'user_id',
     	'team_members',
     	'description'
     	'status',
@@ -25,4 +26,14 @@ class Team extends Model
      * @var array
      */
     protected $table = 'teams';
+
+    /**
+     * Belonds to relationship connects both
+     * the users table to this table
+     *
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

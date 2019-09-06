@@ -14,7 +14,7 @@ class Disease extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'disease_name',
         'frequency',
         'description',
         'status',
