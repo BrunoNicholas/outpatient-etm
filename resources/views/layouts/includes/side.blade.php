@@ -105,6 +105,35 @@
                         </a>
                     </li>
                     <li>
+                        <a href="javascript:void(0)">
+                            <i class="livicon" data-name="table" data-size="18"  data-c="#418bca" data-hc="#418bca" data-size="18" data-loop="true"></i>
+                            <span class="title">Disease Management</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="{{ route('diseases.index') }}">
+                                    <i class="fa fa-angle-double-right"></i> Disease Records
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('cases.index') }}">
+                                    <i class="fa fa-angle-double-right"></i> All Cases
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('cases.create') }}">
+                                    <i class="fa fa-angle-double-right"></i> Add Case
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('tracker') }}">
+                                    <i class="fa fa-angle-double-right"></i> Pattern Tracker
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#">
                             <i class="livicon" data-name="calendar" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
                             <span class="title">Medics Management</span>
@@ -176,41 +205,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="table" data-size="18"  data-c="#418bca" data-hc="#418bca" data-size="18" data-loop="true"></i>
-                            <span class="title">Disease Cases</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('diseases.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> Disease Records
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('cases.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> All Cases
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('cases.create') }}">
-                                    <i class="fa fa-angle-double-right"></i> Add Case
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tracker') }}">
-                                    <i class="fa fa-angle-double-right"></i> Pattern Tracker
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 @endrole
                 @role(['super-admin','admin','pno','pno_admin','specialist','nurse','supervisor','receptionist','client'])
                     <li class="text-center">
                         <a href="#">
                             <!-- <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> -->
-                            <span class="title"><b style="color: #F89A14;">Work Section</b></span>
+                            <span class="title"><b style="color: #F89A14;">More Sections</b></span>
                         </a>
                     </li>
                     <li>
@@ -246,15 +246,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                @endrole
-                @role(['super-admin','admin','pno','pno_admin','client'])
-                    <li class="text-center">
-                        <a href="#" onclick="return alert('This feature is still under development!')">
-                            <!-- <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> -->
-                            <span class="title"><b style="color: #F89A14;">Mappings</b></span>
-                        </a>
-                    </li>
+                    </li>                
                     <li>
                         <a href="#">
                             <i class="livicon" data-name="map" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
@@ -291,31 +283,8 @@
                             @endrole
                         </ul>
                     </li>
+                    <hr>
                     <li>
-                        <a href="#">
-                            <i class="livicon" data-name="location" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
-                            <span class="title">Coverage</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> System Roles
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Permissions
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Add Role
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="text-center">
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
