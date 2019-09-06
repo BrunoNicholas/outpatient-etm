@@ -16,6 +16,7 @@
 	    </button>
 	</div>
 @endif
+{{--
 @if($message = Session::get('success'))
 	<div class="alert alert-success" style="margin: 10px;"> 
 		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 
@@ -24,7 +25,8 @@
 	    	<span aria-hidden="true">&times;</span> 
 	    </button>
 	</div>
-@endif
+@endif 
+--}}
 @if($message = Session::get('info'))
 	<div class="alert alert-info" style="margin: 10px;"> 
 		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 

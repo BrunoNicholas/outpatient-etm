@@ -38,7 +38,7 @@
 @section('content')
     @include('layouts.includes.notifications')
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="panel panel-warning" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -51,7 +51,7 @@
                     </span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="{{ route('users.update', $user->id) }}" method="POST" style="max-height: 350px; overflow-y: auto;">
+                    <form class="form-horizontal" action="{{ route('users.update', $user->id) }}" method="POST" style="overflow-y: auto;">
 
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
@@ -67,95 +67,120 @@
                         @endif
 
                         <fieldset>
-                            <!-- Name input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">Name</label>
-                                <div class="col-md-9">
-                                    <input id="name" name="name" type="text" placeholder="Names" value="{{ $user->name }}" class="form-control" autofocus required></div>
+                                <label class="col-md-2 control-label" for="name">Name</label>
+                                <div class="col-md-10">
+                                    <input id="name" name="name" type="text" placeholder="Full names" class="form-control" autofocus value="{{ $user->name }}" required></div>
                             </div>
-                            <!-- Email input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">E-mail</label>
-                                <div class="col-md-9">
-                                    <input id="email" name="email" type="text" value="{{ $user->email }}" placeholder="mail@example.com" class="form-control" required></div>
-                            </div>
-                            <!-- Message body -->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Age</label>
-                                <div class="col-md-9">
-                                    <input id="number" name="age" type="text" value="{{ $user->age }}" placeholder="54" class="form-control">
+                                <label class="col-md-2 control-label" for="email">E-mail</label>
+                                <div class="col-md-10">
+                                    <input id="email" name="email" value="{{ $user->email }}" type="text" placeholder="Enter valid email" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Location</label>
-                                <div class="col-md-9">
-                                    <input id="text" name="location" type="text" value="{{ $user->location }}" placeholder="Kampala" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Telephone</label>
-                                <div class="col-md-9">
-                                    <input id="text" name="telephone" type="text" value="{{ $user->telephone }}" placeholder="0782 000000" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <input type="hidden" name="password" value="{{ bcrypt('dollar') }}">
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Gender</label>
-                                <div class="col-md-9">
-                                <div class="form-control">
-                                    <input type="radio" name="gender" value="Male"@if($user->gender == 'Male') checked="checked"  @endif> Male 
-                                    <input type="radio" name="gender" value="Female"@if($user->gender == 'Female') checked="checked"  @endif> Female
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Designation (Role)</label>
-                                <div class="col-md-9" style="padding: 0px;">
-                                    <div class="col-md-12">
-                                        <div class="col-md-4">
-                                            <input type="text" value="{{ $user->role }}" class="form-control">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <select name="role" class="form-control">
-                                                @foreach($roles as $role)
-                                                    <option value="{{ $role->name }}">{{ $role->display_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <label class="col-md-2 control-label" for="message">Gender</label>
+                                <div class="col-md-10">
+                                    <div class="form-control">
+                                        <input type="radio" name="gender" value="Male" @if ($user->gender == 'Male')
+                                            checked 
+                                        @endif> Male 
+                                        <input type="radio" name="gender" value="Female" @if ($user->gender == 'Female')
+                                            checked 
+                                        @endif> Female
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Account Status</label>
-                                <div class="col-md-9" style="padding: 0px;">
-                                    <div class="col-md-12">
-                                        <div class="col-md-4">
-                                            <input type="text" value="{{ $user->status }}" class="form-control">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <select name="status" class="form-control">
-                                                <option value="Active"> Active </option>
-                                                <option value="Not Active"> Not Active </option>
-                                                <option value="Frozen"> Frozen </option>
-                                                <option value="Pending"> Pending </option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <label class="col-md-2 control-label" for="message">Date of Birth</label>
+                                <div class="col-md-10">
+                                    <input id="date" name="date_of_birth" type="text" placeholder="{{ date('Y-m-d') }}" value="{{ $user->date_of_birth }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Location</label>
+                                <div class="col-md-10">
+                                    <input id="text" name="location" value="{{ $user->location }}" type="text" placeholder="Kampala" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Telephone</label>
+                                <div class="col-md-10">
+                                    <input id="text" name="telephone" type="text" value="{{ $user->telephone }}" placeholder="000000000" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Designation</label>
+                                <div class="col-md-10">
+                                    <select name="role" class="form-control">
+                                        <option value="{{ $user->role }}">Select to change role</option>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->display_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Account Status</label>
+                                <div class="col-md-10">
+                                    <input type="radio" name="status" value="Active" id="status1" @if ($user->status == 'Active')
+                                        checked
+                                    @endif> Active
+                                    <input type="radio" name="status" value="Away" id="status2" @if ($user->status == 'Away')
+                                        checked
+                                    @endif> Away
+                                    <input type="radio" name="status" value="Busy" id="status3" @if ($user->status == 'Busy')
+                                        checked
+                                    @endif> Busy
+                                    <input type="radio" name="status" value="Blocked" id="status4" @if ($user->status == 'Blocked')
+                                        checked
+                                    @endif> Blocked
+                                    <input type="radio" name="status" value="Other" id="status5" @if ($user->status == 'Other')
+                                        checked
+                                    @endif> Other
                                 </div>
                             </div>
 
                             <!-- Form actions -->
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-responsive btn-primary btn-sm">Update User Profile</button>
+                                    <button type="submit" class="btn btn-responsive btn-primary btn-sm">Update Profile</button>
                                 </div>
                             </div>
                         </fieldset>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h4 class="card-title"> <img src="{{ asset('files/profile/images/'. $user->profile_image) }}" style="max-width: 30px; border-radius: 50%;"> User Profile Operations</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <img src="{{ asset('files/profile/images/'.$user->profile_image) }}" alt="user image" style="max-width: 98%; border-radius: 3px;">
+                        </div>
+                        <hr>
+                        @role(['super-admin','admin'])
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-rounded btn-block"> Back </a>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <div class="tools">
+                                        <button type="submit" class="btn btn-danger btn-rounded btn-block"
+                                            @if($user->id == Auth::user()->id) disabled @elseif($user->role == 'super-admin') disabled @endif onclick="return confirm('You are about to delete {{ $user->name }}\'s account!\nThis is not reversible!')" title="You can not delete your profile"> Delete </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endrole
+                    </div>
                 </div>
             </div>
         </div>

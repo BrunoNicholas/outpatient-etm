@@ -32,7 +32,7 @@
 @section('content')
     @include('layouts.includes.notifications')
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="panel panel-warning" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -45,8 +45,7 @@
                     </span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="{{ route('users.store') }}" method="POST" style="max-height: 350px; overflow-y: auto;">
-
+                    <form class="form-horizontal" action="{{ route('users.store') }}" method="POST" style="overflow-y: auto;">
                         {{ csrf_field() }}
 
                         @foreach ($errors->all() as $error)
@@ -60,77 +59,70 @@
                         @endif
 
                         <fieldset>
-                            <!-- Name input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">Name</label>
-                                <div class="col-md-9">
-                                    <input id="name" name="name" type="text" placeholder="Names" class="form-control" autofocus required></div>
+                                <label class="col-md-2 control-label" for="name">Name</label>
+                                <div class="col-md-10">
+                                    <input id="name" name="name" type="text" placeholder="Full names" class="form-control" autofocus required></div>
                             </div>
-                            <!-- Email input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">E-mail</label>
-                                <div class="col-md-9">
-                                    <input id="email" name="email" type="text" placeholder="mail@example.com" class="form-control" required></div>
-                            </div>
-                            <!-- Message body -->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Age</label>
-                                <div class="col-md-9">
-                                    <input id="number" name="age" type="text" placeholder="54" class="form-control">
+                                <label class="col-md-2 control-label" for="email">E-mail</label>
+                                <div class="col-md-10">
+                                    <input id="email" name="email" type="text" placeholder="Enter valid email" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Location</label>
-                                <div class="col-md-9">
+                                <label class="col-md-2 control-label" for="message">Gender</label>
+                                <div class="col-md-10">
+                                    <div class="form-control">
+                                        <input type="radio" name="gender" value="Male"> Male 
+                                        <input type="radio" name="gender" value="Female"> Female
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Date of Birth</label>
+                                <div class="col-md-10">
+                                    <input id="date" name="date_of_birth" type="text" placeholder="{{ date('Y-m-d') }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="message">Location</label>
+                                <div class="col-md-10">
                                     <input id="text" name="location" type="text" placeholder="Kampala" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Telephone</label>
-                                <div class="col-md-9">
-                                    <input id="text" name="telephone" type="text" placeholder="0782 000000" class="form-control" required>
+                                <label class="col-md-2 control-label" for="message">Telephone</label>
+                                <div class="col-md-10">
+                                    <input id="text" name="telephone" type="text" placeholder="000000000" class="form-control">
                                 </div>
                             </div>
-
                             <input type="hidden" name="password" value="{{ bcrypt('dollar') }}">
-
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Gender</label>
-                                <div class="col-md-9">
-                                <div class="form-control">
-                                    <input type="radio" name="gender" value="Male"> Male 
-                                    <input type="radio" name="gender" value="Female"> Female
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Designation</label>
-                                <div class="col-md-9">
-                                <select name="role" class="form-control">
-                                    @foreach($roles as $role)
-                                        <option value="{{ $role->name }}">{{ $role->display_name }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="col-md-2 control-label" for="message">Designation</label>
+                                <div class="col-md-10">
+                                    <select name="role" class="form-control">
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->display_name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Account Status</label>
-                                <div class="col-md-9">
-                                <select name="status" class="form-control">
-                                    <option value="Active"> Active </option>
-                                    <option value="Not Active"> Not Active </option>
-                                    <option value="Frozen"> Frozen </option>
-                                    <option value="Pending"> Pending </option>
-                                </select>
+                                <label class="col-md-2 control-label" for="message">Account Status</label>
+                                <div class="col-md-10">
+                                    <input type="radio" name="status" value="Active" id="status1"> Active
+                                    <input type="radio" name="status" value="Away" id="status2"> Away
+                                    <input type="radio" name="status" value="Busy" id="status3"> Busy
+                                    <input type="radio" name="status" value="Blocked" id="status4"> Blocked
+                                    <input type="radio" name="status" value="Other" id="status5" checked> Other
                                 </div>
                             </div>
 
                             <!-- Form actions -->
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-responsive btn-primary btn-sm">Submit</button>
+                                    <button type="submit" class="btn btn-responsive btn-primary btn-sm">Add User</button>
                                 </div>
                             </div>
                         </fieldset>

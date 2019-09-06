@@ -39,7 +39,7 @@
                 <div class="panel-heading clearfix  ">
                     <div class="panel-title pull-left">
                         <div class="caption">
-                            <i class="livicon" data-name="users" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> All System Users <a href="{{ route('users.create') }}"><button class="btn btn-xs btn-warning btn-round"><i class="fa fa-plus"></i> Add New</button></a>
+                            <i class="livicon" data-name="users" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> System Users <a href="{{ route('users.create') }}"><button class="btn btn-xs btn-warning btn-round"><i class="fa fa-plus"></i> Add New</button></a>
                         </div>
                     </div>
                     <div class="tools pull-right"></div>
@@ -51,10 +51,8 @@
                             	<th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <!-- <th>Age</th>	-->
                                 <th>Gender</th>
                                 <th>Location</th>
-                                <!-- <th>Telephone</th>	-->
                                 <th>Designation</th>
                                 <th>Account Status</th>
                                 <th>Action</th>
@@ -65,10 +63,8 @@
                             	<th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <!-- <th>Age</th>	-->
                                 <th>Gender</th>
                                 <th>Location</th>
-                                <!-- <th>Telephone</th>	-->
                                 <th>Designation</th>
                                 <th>Account Status</th>
                                 <th>Action</th>
@@ -78,17 +74,37 @@
                         	@foreach($users as $user)
                             <tr>
                             	<td>{{ ++$i }}</td>
-                                <td>{{ $user->name }}</td>
+                                <td><img src="{{ asset('files/profile/images/'. $user->profile_image) }}" style="max-width: 30px; border-radius: 50%;"> {{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <!-- <td>{{ $user->age }}</td>	-->
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->location }}</td>
-                                <!-- <td>{{ $user->telephone }}</td>	-->
-                                <td>{{ $user->role }}</td>
-                                <td>{{ $user->status }}</td>
-                                <td style="min-width: 200px;">
-                                	<a class="btn btn-raised btn-success btn-xs" data-toggle="modal"  href="#ajax{{ $user->id }}modal" style="width: 40%; float: left; margin: 1px;">Details</a>
-                                	<a class="btn btn-raised btn-warning btn-xs" href="{{ route('users.edit',$user->id) }}" style="width: 40%; float: left; margin: 1px;">Edit</a>
+                                <td class="text-center">
+                                	{{ App\Models\Role::where('name',$user->role)->first()->display_name }}
+                                </td>
+                                <td class="text-center">
+                                	@if($user->status == 'Active')
+                                        <span class="btn-xs btn-rounded label label-success">{{ $user->status }}</span>
+                                    @elseif($user->status == 'Away')
+                                        <span class="btn-xs btn-rounded label label-primary">{{ $user->status }}</span>
+                                    @elseif($user->status == 'Busy')
+                                        <span class="btn-xs btn-rounded label label-danger">{{ $user->status }}</span>
+                                    @elseif($user->status == 'Blocked')
+                                        <span class="btn-xs btn-rounded label label-danger">{{ $user->status }}</span>
+                                    @elseif($user->status == 'Inactive')
+                                        <span class="btn-xs btn-rounded label label-info">{{ $user->status }}</span>
+                                    @else
+                                        <span class="btn-xs btn-rounded label label-warning">{{ $user->status }}</span>
+                                    @endif
+                                </td>
+                                <td style="min-width: 150px;">
+                                	<div class="row">
+                                		<div class="col-md-6">
+                                			<a class="btn btn-raised btn-success btn-xs" data-toggle="modal"  href="#ajax{{ $user->id }}modal">Details</a>
+                                		</div>
+                                		<div class="col-md-6">
+                                			<a class="btn btn-raised btn-warning btn-xs" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                		</div>
+                                	</div>
                                 </td>
                             </tr>
                             <div class="modal fade in" id="ajax{{ $user->id }}modal" tabindex="-1" role="dialog" aria-hidden="false">
@@ -198,8 +214,10 @@
 						                                            </div>
 						                                        </div>
 					                                        </div>
-					                                        <div class="tab-pane fade" id="profil{{ $user->id }}e">
-					                                        	<p>Sorry, This Feature is still under development!</p>
+					                                        <div class="tab-pane fade text-center" id="profil{{ $user->id }}e">
+					                                        	<p>Profile Imgae!</p>
+					                                        	<br>
+					                                        	<img src="{{ asset('files/profile/images/'.$user->profile_image) }}" alt="user image" style="border-radius: 3px;">
 					                                        </div>
 					                                    </div>
 					                                </div>
