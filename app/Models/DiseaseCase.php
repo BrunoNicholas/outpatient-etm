@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Disease;
+use App\Models\Activity;
 
 class DiseaseCase extends Model
 {
@@ -36,5 +37,15 @@ class DiseaseCase extends Model
     public function diseases()
     {
         return $this->hasMany(Disease::class);
+    }
+
+    /**
+     * The relationship method for user activities.
+     *
+     * as user activities.
+     */
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
     }
 }

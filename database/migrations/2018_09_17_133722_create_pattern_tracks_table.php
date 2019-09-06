@@ -18,8 +18,9 @@ class CreatePatternTracksTable extends Migration
             $table->integer('disease_id')->unsigned()->onDelete('cascade');
             $table->string('case_id');
             $table->integer('case_freq')->default(0);
-            $table->string('month');
-            $table->string('year');
+            $table->string('month')->nullable();
+            $table->string('year')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('disease_id')->references('id')->on('diseases')->onDelete('cascade');

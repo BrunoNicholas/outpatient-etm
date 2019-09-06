@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DiseaseCase;
+use App\Models\Tasks;
+use App\User;
 
 class Activity extends Model
 {
@@ -13,10 +16,9 @@ class Activity extends Model
      */
     protected $fillable = [
     	'name',
-    	'supervisor',
-    	'task',
-    	'team_member',
-    	'disease_case',
+    	'user_id', // supervisor
+    	'task_id',
+    	'disease_case_id',
     	'client',
     	'description',
     	'status',
@@ -28,4 +30,34 @@ class Activity extends Model
      * @var array
      */
     protected $table = 'activities';
+
+    /**
+     * Belonds to relationship connects both
+     * the users table to this table
+     *
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Belonds to relationship connects both
+     * the tasks table to this table
+     *
+     */
+    public function tasks()
+    {
+        return $this->belongsTo(Tasks::class);
+    }
+
+    /**
+     * Belonds to relationship connects both
+     * the disease cases table to this table
+     *
+     */
+    public function diseaseCases()
+    {
+        return $this->belongsTo(DiseaseCase::class);
+    }
 }

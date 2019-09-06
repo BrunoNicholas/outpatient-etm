@@ -7,7 +7,10 @@ use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+
 use App\Models\Message;
+use App\Models\Leave;
+use App\Models\Activity;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -56,5 +59,25 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    /**
+     * The relationship method for user leaves.
+     *
+     * as user leaves.
+     */
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class);
+    }
+
+    /**
+     * The relationship method for user activities.
+     *
+     * as user activities.
+     */
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
     }
 }

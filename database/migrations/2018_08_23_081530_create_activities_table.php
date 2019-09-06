@@ -16,20 +16,18 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('supervisor')->unsigned()->onDelete('cascade');
-            $table->integer('task')->unsigned()->onDelete('cascade');
-            $table->integer('team_member')->unsigned()->onDelete('cascade');
-            $table->integer('disease_case')->unsigned()->onDelete('cascade');
+            $table->integer('user_id')->unsigned(); // supervisor
+            $table->integer('task_id')->unsigned();
+            $table->integer('disease_case_id')->unsigned()->onDelete('cascade');
             $table->integer('client')->unsigned()->onDelete('cascade');
-            $table->string('description');
-            $table->string('status');
+            $table->string('description')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
 
-            $table->foreign('supervisor')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('client')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('team_member')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('task')->references('id')->on('tasks')->onDelete('cascade');
-            $table->foreign('disease_case')->references('id')->on('disease_cases')->onDelete('cascade');
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
+            $table->foreign('disease_case_id')->references('id')->on('disease_cases')->onDelete('cascade');
         });
     }
 

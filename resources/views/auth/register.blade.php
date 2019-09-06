@@ -5,8 +5,8 @@
 <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <img src="{{ asset('images/favicon.jpg') }}" alt="Logo" style="width: 50px;">
-            <h3 class="panel-title text-center">Register | {{ config('app.name') }}</h3>
+            <img src="{{ asset('images/favicon.jpg') }}" alt="Logo" style="width: 50px; border-radius: 5px;">
+            <h3 class="panel-title text-center">Register - {{ config('app.name') }}</h3>
         </div>
         <div class="panel-body">
             <form accept-charset="UTF-8" role="form" method="POST" action="{{ route('register') }}">

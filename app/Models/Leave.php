@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Leave extends Model
 {
@@ -13,7 +14,7 @@ class Leave extends Model
      */
     protected $fillable = [
     	'applicant',
-    	'recipient',
+    	'user_id', // recipient
     	'department',
     	'reason',
     	'description',
@@ -29,4 +30,14 @@ class Leave extends Model
      * @var array
      */
     protected $table = 'leaves';
+    
+    /**
+     * Belonds to relationship connects both 
+     * the user table and the this table
+     *
+     */
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -15,19 +15,19 @@ class CreateLeavesTable extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('applicant')->unsigned()->onDelete('cascade');
-            $table->integer('recipient')->unsigned()->onDelete('cascade');
+            $table->integer('applicant')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('department')->nullable();
             $table->string('reason');
             $table->text('description')->nullable();
-            $table->string('date_from');
-            $table->string('date_to');
-            $table->string('priority');
-            $table->string('status');
+            $table->date('date_from')->nullable();
+            $table->string('date_to')->default('open')->nullable();
+            $table->string('priority')->default('normal')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('applicant')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('recipient')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

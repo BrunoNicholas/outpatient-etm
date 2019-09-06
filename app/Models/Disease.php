@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PatternTrack;
 use App\Models\DiseaseCase;
 
 class Disease extends Model
@@ -27,14 +28,23 @@ class Disease extends Model
     protected $table = 'diseases';
 
     /**
+     * The relationship method for pattern tracks.
+     *
+     * as pattern tracks.
+     */
+    public function pattern_tracks()
+    {
+        return $this->hasMany(PatternTrack::class);
+    }
+
+    /**
      * Belonds to relationship connects both
-     * the comment to e parent post, question, sermon 
-     * or deveotional
+     * the disease cases table to this table
      *
      */
 
     public function diseaseCases()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(DiseaseCase::class);
     }
 }

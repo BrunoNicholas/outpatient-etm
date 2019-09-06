@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Disease;
 
 class PatternTrack extends Model
 {
@@ -17,7 +18,7 @@ class PatternTrack extends Model
         'case_freq', 			// integer
         'month',
         'year',
-
+        'status'
     ];
 
     /**
@@ -26,4 +27,14 @@ class PatternTrack extends Model
      * @var array
      */
     protected $table = 'pattern_tracks';
+    
+    /**
+     * Belonds to relationship connects both 
+     * the diseases table and the this table
+     *
+     */
+    public function diseases()
+    {
+        return $this->belongsTo(Disease::class);
+    }
 }
