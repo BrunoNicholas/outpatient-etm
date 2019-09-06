@@ -33,10 +33,6 @@
 @endsection
 @section('content')
     @include('layouts.includes.notifications')
-	@role(['super-admin','admin','subscriber'])
-		@include('notify')
-	@endrole
-
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-primary filterable">
@@ -75,9 +71,15 @@
                                 <td>{{ $role->name }}</td>
                                 <td>{{ $role->display_name }}</td>
                                 <td>{{ $role->description }}</td>
-                                <td style="min-width: 200px;">
-                                    <a class="btn btn-raised btn-success btn-xs" data-toggle="modal"  href="#ajax{{ $role->id }}modal" style="width: 40%; float: left; margin: 1px;">Details</a>
-                                    <a class="btn btn-raised btn-warning btn-xs" href="{{ route('roles.edit', $role->id) }}" style="width: 40%; float: left; margin: 1px;">Edit</a>
+                                <td style="text-align: center;" class="text-center">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a class="btn btn-raised block btn-success btn-xs" data-toggle="modal"  href="#ajax{{ $role->id }}modal">Details</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a class="btn btn-raised block btn-warning btn-xs" href="{{ route('roles.edit', $role->id) }}">Edit</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <div class="modal fade in" id="ajax{{ $role->id }}modal" tabindex="-1" role="dialog" aria-hidden="false">

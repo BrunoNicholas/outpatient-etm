@@ -33,9 +33,6 @@
 @endsection
 @section('content')
     @include('layouts.includes.notifications')
-	@role(['super-admin','admin','subscriber'])
-		@include('notify')
-	@endrole
 	<div class="row">
         <div class="col-lg-12">
             <div class="panel panel-primary filterable">

@@ -31,10 +31,6 @@
 @endsection
 @section('content')
     @include('layouts.includes.notifications')
-	@role(['super-admin','admin','subscriber'])
-		@include('notify')
-	@endrole
-
     <div class="row">
         <div class="col-md-9">
             <div class="panel panel-warning" id="hidepanel1">
