@@ -56,49 +56,32 @@
                             <table class="table  table-striped" id="users">
                                 <tr>
                                     <td>Names</td>
-                                    <td>
-                                        {{ Auth::user()->name }}
-                                    </td>
+                                    <td> {{ Auth::user()->name }} </td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td>
-                                        {{ Auth::user()->email }}
-                                    </td>
+                                    <td> {{ Auth::user()->email }} </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Phone Number
-                                    </td>
-                                    <td>
-                                        {{ Auth::user()->telephone }}
-                                    </td>
+                                    <td> Privilege </td>
+                                    <td>{{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td> Phone Number </td>
+                                    <td> {{ Auth::user()->telephone }} </td>
                                 </tr>
                                 <tr>
                                     <td>Address</td>
-                                    <td>
-                                        {{ Auth::user()->location }}
-                                    </td>
+                                    <td> {{ Auth::user()->location }} </td>
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    <td>
-                                        {{ Auth::user()->status }}
-                                    </td>
+                                    <td> {{ Auth::user()->status }} </td>
                                 </tr>
                                 <tr>
-                                    <td>Created At</td>
-                                    <td>
-                                        {{ Auth::user()->created_at }}
-                                    </td>
+                                    <td>Joined</td>
+                                    <td> {{ Auth::user()->created_at }} </td>
                                 </tr>
-                                <!-- 
-                                <tr>
-                                    <td>Profile</td>
-                                    <td>
-                                        
-                                    </td>
-                                </tr> -->
                             </table>
                         </div>
                     </div>

@@ -75,7 +75,7 @@
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
                             <img src="{{ asset('files/profile/images/'.Auth::user()->profile_image) }}" width="90" class="img-circle img-responsive" height="90" alt="User Image" />
-                            <p class="topprofiletext">{{ Auth::user()->name }} <br> <small>{{ Auth::user()->role }}</small></p>
+                            <p class="topprofiletext">{{ Auth::user()->name }} <br> <small>{{ App\Models\Role::where('name',Auth::user()->role)->first()->display_name }}</small></p>
                         </li>
                         <!-- Menu Body -->
                         <li>
