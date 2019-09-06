@@ -26,6 +26,7 @@
     </ol>
 @endsection
 @section('content')
+    @include('layouts.includes.notifications')
     @if($user->id == Auth::user()->id)
         <div class="row ">
             <div class="col-md-12">
@@ -146,11 +147,8 @@
                                     <div class="col-md-12 pd-top">
 
                                         <form action="{{ route('users.update', $user->id) }}" class="form-horizontal" method="POST">
-
                                             {{ csrf_field() }}
-
                                             {{ method_field('PATCH') }}
-
                                             @foreach ($errors->all() as $error)
                                                 <p class="alert alert-danger"> {{ $error }} </p>
                                             @endforeach
@@ -184,55 +182,10 @@
                                                             <span class="input-group-addon">
                                                                 <i class="livicon" data-name="mail" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                                                             </span>
-                                                            <input type="text" name="email" placeholder="Names" class="form-control" value="{{ $user->email }}" />
+                                                            <input type="text" name="email" placeholder="Names" class="form-control" value="{{ $user->email }}" placeholder="Do not change email. Account will be chaged completely!" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">
-                                                        Password
-                                                        <span class='require text-danger'>*</span>
-                                                    </label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                            <input type="password" name="password" placeholder="Password" class="form-control" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">
-                                                        Confirm Password
-                                                        <span class='require text-danger'></span>
-                                                    </label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                            <input type="password" placeholder="Confirm Password" class="form-control" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">
-                                                        Age
-                                                        <span class='require text-danger'></span>
-                                                    </label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="user-add" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                            <input type="number" placeholder="Age in number" class="form-control" value="{{ $user->age }}" name="age" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">
                                                         Gender
@@ -244,9 +197,38 @@
                                                                 <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                                                             </span>
                                                             <div class="form-control">
-                                                                <input name="gender" type="radio" value="Male" @if($user->gender == 'Male') checked="checked" @endif> Male
-                                                                <input type="radio" name="gender" value="Female" @if($user->gender == 'Female') checked="checked" @endif> Female
+                                                                <input name="gender" type="radio" value="Male" @if($user->gender == 'Male') checked @endif> Male
+                                                                <input type="radio" name="gender" value="Female" @if($user->gender == 'Female') checked @endif> Female
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">
+                                                        Telephone Number
+                                                        <span class='require text-danger'>*</span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                            <input type="text" placeholder="077..." class="form-control" value="{{ $user->telephone }}" name="telephone" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">
+                                                        Date of birth
+                                                        <span class='require text-danger'></span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user-add" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                            <input type="date" placeholder="Age in number" class="form-control" value="{{ $user->date_of_birth }}" name="date_of_birth" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -265,22 +247,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">
-                                                        Telephone Number
-                                                        <span class='require text-danger'>*</span>
-                                                    </label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon">
-                                                                <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                                                            </span>
-                                                            <input type="text" placeholder="077..." class="form-control" value="{{ $user->telephone }}" name="telephone" />
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
 
                                             <input type="hidden" name="role" value="{{ $user->role }}">
@@ -292,14 +258,25 @@
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                                                         </span>
-                                                        <select name="status" class="form-control">
-                                                            <option value="Active"> Active </option>
-                                                            <option value="Not Active"> Not Active </option>
-                                                            <option value="Frozen"> Frozen </option>
-                                                            <option value="Pending"> Pending </option>
-                                                        </select>
+                                                        <div class="form-control">
+                                                            <input type="radio" name="status" value="Active" id="status1" @if ($user->status == "Active")
+                                                                checked 
+                                                            @endif> Active
+                                                            <input type="radio" name="status" value="Away" id="status1" @if ($user->status == "Away")
+                                                                checked 
+                                                            @endif> Away
+                                                            <input type="radio" name="status" value="Busy" id="status1" @if ($user->status == "Busy")
+                                                                checked 
+                                                            @endif> Busy
+                                                            <input type="radio" name="status" value="Blocked" id="status1" @if ($user->status == "Blocked")
+                                                                checked 
+                                                            @endif> Blocked
+                                                            <input type="radio" name="status" value="Other" id="status1" @if ($user->status == "Other")
+                                                                checked 
+                                                            @endif> Other
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

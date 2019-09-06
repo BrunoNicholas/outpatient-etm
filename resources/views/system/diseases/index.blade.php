@@ -27,9 +27,7 @@
     </ol>
 @endsection
 @section('content')
-	@role(['super-admin','admin','human_resource','hr_admin'])
-        @include('notify')
-    @endrole
+    @include('layouts.includes.notifications')
     <div class="row ">
         <div class="col-md-10 col-sm-8">
         	<div class="panel panel-danger filterable">

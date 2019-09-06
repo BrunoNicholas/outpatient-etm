@@ -36,6 +36,7 @@
     </ol>
 @endsection
 @section('content')
+    @include('layouts.includes.notifications')
 	@role(['super-admin','admin','subscriber'])
 		@include('notify')
 	@endrole

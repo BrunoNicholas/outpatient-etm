@@ -161,7 +161,7 @@ class UserController extends Controller
         if ($request->router) {
             return redirect()->route($request->router)->with('success','Your profile has been updated successfully!');
         }
-        return redirect()->route('users.index')->with('success','User Updated Successfully');
+        return back()->with('success','User Updated Successfully');
     }
 
     /**

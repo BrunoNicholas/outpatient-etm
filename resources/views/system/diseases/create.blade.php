@@ -21,6 +21,7 @@
     </ol>
 @endsection
 @section('content')
+    @include('layouts.includes.notifications')
     <div class="row ">
         <div class="col-md-10 col-sm-8">
             <div class="panel panel-primary" id="hidepanel1">

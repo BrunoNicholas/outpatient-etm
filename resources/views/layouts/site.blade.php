@@ -29,12 +29,6 @@
 <body class="skin-josh">
     @include('layouts.includes.header')
     <div class="wrapper row-offcanvas row-offcanvas-left">
-        <!-- Left side column. contains the logo and sidebar -->
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
         @include('layouts.includes.side')
         <aside class="right-side">
             @if($message = Session::get('success'))
