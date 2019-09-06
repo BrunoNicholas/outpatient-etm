@@ -27,10 +27,97 @@
 @endsection
 @section('content')
     @include('layouts.includes.notifications')
-
-
-
-
+    <div class="row ">
+        <div class="col-md-9 col-sm-8">
+            <div class="panel panel-danger filterable">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left">
+                        <i class="livicon" data-name="bug" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Disease Details - {{ $disease->disease_name }}
+                    </h3>
+                </div>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <h4>Disease Name</h4>
+                            </div>
+                            <div class="col-md-10 text-center">
+                                <span>{{ $disease->disease_name }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <h4>Disease Description</h4>
+                            </div>
+                            <div class="col-md-10 text-center">
+                                <textarea class="form-control" style="border: none; background: #fff;" disabled>{{ $disease->description }}</textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <h4>Disease Frequest</h4>
+                            </div>
+                            <div class="col-md-10 text-center">
+                                <span>{{ $disease->frequency }} Frequest</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <h4>Disease Status</h4>
+                            </div>
+                            <div class="col-md-10 text-center">
+                                <span>{{ $disease->status }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                <h4>Date Added</h4>
+                            </div>
+                            <div class="col-md-10 text-center">
+                                <span>{{ $disease->created_at }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-body">
+                    <h4 class="card-title text-center"> Operations | {{ config('app.name') }} </h4>
+                    <h6 class="card-subtitle"></h6>
+                    @role(['super-admin','admin'])
+                        <hr />
+                        <a href="{{ route('diseases.edit', $disease->id) }}" class="btn btn-info btn-block">Edit Record</a>
+                    @endrole
+                    <div class="row text-center">
+                        <hr>
+                        @role(['super-admin','admin'])
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ route('diseases.index') }}" class="btn btn-primary btn-rounded btn-block"> Back </a>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="POST" action="{{ route('diseases.destroy', $disease->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <div class="tools">
+                                        <button type="submit" class="btn btn-danger btn-rounded btn-block"
+                                            onclick="return confirm('You are about to delete this disease record!\nThis is not reversible!')" title="Delete disea record completely"> Delete </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endrole
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
 	<script type="text/javascript" src="{{ asset('app/vendors/datatables/js/jquery.dataTables.js') }}"></script>
