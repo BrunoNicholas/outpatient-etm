@@ -118,16 +118,11 @@
                             </li>
                             <li>
                                 <a href="{{ route('cases.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> All Cases
+                                    <i class="fa fa-angle-double-right"></i> Disease Cases
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('cases.create') }}">
-                                    <i class="fa fa-angle-double-right"></i> Add Case
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tracker') }}">
+                                <a href="{{ route('tracker.index') }}">
                                     <i class="fa fa-angle-double-right"></i> Pattern Tracker
                                 </a>
                             </li>
@@ -145,16 +140,6 @@
                                     <i class="fa fa-angle-double-right"></i> All Leaves
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('leaves.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> Leave Requests
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Log Tracker
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li>
@@ -166,41 +151,17 @@
                         <ul class="sub-menu">
                             <li>
                                 <a href="{{ route('teams.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> Teams &amp; Tasks
+                                    <i class="fa fa-angle-double-right"></i> Medical Teams
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('tasks.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> Tasks &amp; Projects
+                                    <i class="fa fa-angle-double-right"></i> Medical Tasks
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('activities.index') }}">
                                     <i class="fa fa-angle-double-right"></i> All Activities
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="users-add" data-size="18"  data-c="#5bc0de" data-hc="#5bc0de" data-size="18" data-loop="true"></i>
-                            <span class="title">Team Management</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('teams.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> View Teams
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('teams.create') }}">
-                                    <i class="fa fa-angle-double-right"></i> Create Team
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Team Activities
                                 </a>
                             </li>
                         </ul>
@@ -215,6 +176,20 @@
                     </li>
                     <li>
                         <a href="#">
+                            <i class="livicon" data-name="map" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
+                            <span class="title"> Map Locator</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-angle-double-right"></i> View Full Map
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
                             <i class="livicon" data-name="users" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
                             <span class="title">Settings</span>
                             <span class="fa arrow"></span>
@@ -226,61 +201,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('activities.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> Active Activity
-                                </a>
-                            </li>
-                            <li>
                                 <a href="">
                                     <i class="fa fa-angle-double-right"></i> Infor
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Your Teams
-                                </a>
-                            </li>
-                            <li>
                                 <a href="{{ route('projects.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> My Projects &amp; Tasks
+                                    <i class="fa fa-angle-double-right"></i> My Projects
                                 </a>
                             </li>
-                        </ul>
-                    </li>                
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="map" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
-                            <span class="title">Tracker (Locator)</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> View Full Map
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Go To Pin
-                                </a>
-                            </li>
-                            @role(['super-admin','admin','specialist','supervisor','nurse'])
-                                <li>
-                                    <a href="">
-                                        <i class="fa fa-angle-double-right"></i> Add User
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="session_timeout.html">
-                                        <i class="fa fa-angle-double-right"></i> Teams
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="portlet_draggable.html">
-                                        <i class="fa fa-angle-double-right"></i> Assign User tasks
-                                    </a>
-                                </li>
-                            @endrole
                         </ul>
                     </li>
                     <hr>

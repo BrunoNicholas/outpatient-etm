@@ -23,9 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function(){
-	Route::resource('incidents', 'IncidentController');
 	Route::resource('/{type}/messages', 'MessageController');
-	Route::resource('structure/departments/projects', 'ProjectController');
 	Route::resource('/questions', 'QuestionController');
 	Route::resource('projects/posts', 'PostController');
 	Route::resource('structure/departments', 'DepartmentController');
@@ -77,8 +75,6 @@ Route::group(['middleware' => ['auth','verified']], function(){
 	Route::resource('/home/medical/diseases', 'DiseaseController');
 	Route::resource('/home/employee/leaves', 'LeaveController');
 	Route::resource('/home/medical/tracker', 'PatternTrackController');
-	# Route::resource('', '');
-	# Route::resource('', '');
 
 	Route::get('/home/admin', [
 		'as' => 'admin',
@@ -102,11 +98,11 @@ Route::group(['middleware' => ['auth','verified']], function(){
 		'uses'	=> 'AdminPageController@perms',
 	]);
 
-	Route::get('/home/admin/pattern-tracker', [
-		'as'	=> 'tracker',
-		'middleware' => 'role:super-admin|admin|pno|pno-admin|supervisor',
-		'uses'	=> 'PagesController@tracker',
-	]);
+	// Route::get('/home/admin/pattern-tracker', [
+	// 	'as'	=> 'tracker',
+	// 	'middleware' => 'role:super-admin|admin|pno|pno-admin|supervisor',
+	// 	'uses'	=> 'PagesController@tracker',
+	// ]);
 });
 
 Route::group(['middleware' => 'web'], function(){
