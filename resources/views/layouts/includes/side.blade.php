@@ -87,18 +87,10 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Time
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Request For Leave
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('home.messaging', Auth::user()->id) }}">
+                            <li> <a href=""> <i class="fa fa-angle-double-right"></i> Time </a></li>
+                            <li> <a href=""> <i class="fa fa-angle-double-right"></i> Request For Leave </a></li>
+                            <li> 
+                                <a href="{{ route('messages.index', 'inbox') }}">
                                     <i class="fa fa-angle-double-right"></i> Messaging
                                 </a>
                             </li>
@@ -132,11 +124,6 @@
                             <li>
                                 <a href="">
                                     <i class="fa fa-angle-double-right"></i> Log Tracker
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('home.messaging', Auth::user()->id) }}">
-                                    <i class="fa fa-angle-double-right"></i> Messaging
                                 </a>
                             </li>
                         </ul>

@@ -96,11 +96,6 @@ Route::group(['middleware' => ['auth','verified']], function(){
 		'uses'	=> 'PagesController@unlock',
 	]);
 
-	Route::get('/home/profiles/messaging/', [
-		'as'	=> 'home.messaging',
-		'uses'	=> 'PagesController@messaging',
-	]);
-
 	Route::get('/home/admin/roles/permissions', [
 		'as'	=> 'permissions',
 		'middleware' => 'role:super-admin|admin',
