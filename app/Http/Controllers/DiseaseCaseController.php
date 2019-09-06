@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\DiseaseCase;
+use App\Models\Disease;
 use Illuminate\Http\Request;
 
 class DiseaseCaseController extends Controller
 {
+    /**
+     * Display the constructor of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct()
+    {
+        $this->middleware('role:super-admin|admin|editor')->except('index','show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +36,8 @@ class DiseaseCaseController extends Controller
      */
     public function create()
     {
-        return view('system.cases.create');
+        $diseases = Disease::all();
+        return view('system.cases.create',compact(['diseases']));
     }
 
     /**
