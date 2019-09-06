@@ -52,16 +52,6 @@
                     </ul>
                 </li>
                 @role(['super-admin','admin','pno','pno_admin'])
-                    <li class="text-center">
-                        <a href="javascript:void(0)">
-                            <span class="title">
-                                {{-- <i class="livicon" data-name="user" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i> --}}
-                                <b style="color: #F89A14;"><i class="fa-user fa" style="color: #fff;"></i> PERSONAL </b>
-                            </span>
-                        </a>
-                    </li>
-                @endrole
-                @role(['super-admin','admin','pno','pno_admin'])
                     <li>
                         <a href="#">
                             <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
