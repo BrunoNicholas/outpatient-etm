@@ -44,6 +44,7 @@
                                 <th>Disease Name</th>
                                 <th>Frequency</th>
                                 <th>Disease Status</th>
+                                <th>Description</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -53,6 +54,7 @@
                                 <th>Disease Name</th>
                                 <th>Frequency</th>
                                 <th>Disease Status</th>
+                                <th>Description</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
@@ -64,6 +66,7 @@
 	                                <td>{{ $disease->disease_name }}</td>
                                     <td>{{ $disease->frequency }}</td>
 	                                <td>{{ $disease->status }}</td>
+                                    <td><textarea class="form-control" style="border: none;">{{ $disease->description }}</textarea></td>
 	                                <td style="width: 200px;">
 	                                	<a href="{{ route('diseases.show', $disease->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View</a>
 	                                	<a href="{{ route('diseases.edit', $disease->id) }}" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit</a>
