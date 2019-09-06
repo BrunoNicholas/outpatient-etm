@@ -35,7 +35,7 @@
                             <div class="text-center">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail">
-                                        <img src="{{ asset('images/favicon.png') }}" class="img-responsive user_image" alt="image" />
+                                        <img src="{{ asset('files/profile/images/'.Auth::user()->profile_image) }}" class="img-responsive user_image" alt="image" />
                                     </div>
                                     <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                     <div>
@@ -110,12 +110,17 @@
                             </li>
                             <li>
                                 <a href="#tab-messages" data-toggle="tab">
-                                    <i class="livicon" data-name="mail" data-size="16" data-c="#01BC8C" data-hc="#01BC8C" data-loop="true"></i>Messages
+                                    <i class="livicon" data-name="mail" data-size="16" data-c="#01BC8C" data-hc="#01BC8C" data-loop="true"></i>Profile Image
                                 </a>
                             </li>
                             <li>
                                 <a href="#tab-change-pwd" data-toggle="tab">
-                                    <i class="livicon" data-name="key" data-size="16" data-c="#01BC8C" data-hc="#01BC8C" data-loop="true"></i> Change Account Details
+                                    <i class="livicon" data-name="key" data-size="16" data-c="#01BC8C" data-hc="#01BC8C" data-loop="true"></i> Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#tab-change-pwd2" data-toggle="tab">
+                                    <i class="livicon" data-name="key" data-size="16" data-c="#01BC8C" data-hc="#01BC8C" data-loop="true"></i> Change Password
                                 </a>
                             </li>
                         </ul>
@@ -123,16 +128,12 @@
                             <div id="tab-activity" class="tab-pane fade in active">
                                 <div class="activity">
                                     <div class="imgs-profile">
-                                    	<a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="{{ asset('images/favicon.png') }}" alt="">
+                                    	<a class="pull-left" href="javascript:void(0)">
+                                            <img class="media-object img-circle" src="{{ asset('images/favicon.png') }}" style="max-width: 35px;" alt="nice">
                                         </a>
                                         <div class="media-body">
-                                            <strong>{{ config('app.name') }} : </strong> You Created Your Profile.
+                                            <strong>{{ config('app.name') }} : </strong> You Created Your Profile on <small class="text-muted"> {{ Auth::user()->created_at }} </small>
                                             <br>
-                                            <small class="text-muted">
-                                                {{ Auth::user()->created_at }}
-                                            </small>
-                                                            
                                             <p>
                                                 Thanks for creating an account with {{ config('app.name') }}. We shall be giving you notifications here of any opportunities
                                             </p>
@@ -319,22 +320,14 @@
                                 <table class="table table-striped table-advance table-hover web-mail" id="inbox-check">
                                     <tbody>
                                         <tr data-messageid="1" class="unread">
-                                            <td style="width:4%;" class="inbox-small-cells">
-                                                <div class="checker ">
-                                                    <span>
-                                                        <input type="checkbox" class="mail-checkbox custom-checkbox" checked="checked" disabled></span>
-                                                </div>
-                                            </td>
-                                            <td class="inbox-small-cells">
-                                                <i class="livicon" data-n="star-full" data-s="15"></i>
-                                            </td>
                                             <td class="view-message hidden-xs">
                                                 <a href="view_mail.html">
-                                                    <img src="#" data-src="holder.js/25x25/#000:#fff" class="img-circle img-responsive pull-left" alt="Image"> Admin </a>
+                                                    <img src="{{ asset('images/favicon.png') }}" data-src="holder.js/25x25/#000:#fff" class="img-circle img-responsive pull-left" alt="Image" style="max-width: 35px;"> Admin </a>
                                             </td>
                                             <td class="view-message ">
-                                                <a href="#">
-                                                    Welcome to {{ config('app.name') }}! Please finish setting up your account so that we can know you more.
+                                                <a href="javascript:void(0)">
+                                                    Thank you for being with {{ config('app.name') }}! <br>
+                                                    Your profile is the identity to know you and serve you best. Please update it to see how we can work together.
                                                 </a>
                                             </td>
                                             <td class="view-message inbox-small-cells">
@@ -344,135 +337,74 @@
                                                 <a href="view_mail.html">{{ Auth::user()->created_at }}</a>
                                             </td>
                                         </tr>
-                                        @foreach($chats as $chat)
-                                            <tr data-messageid="2" class="unread">
-                                                <td class="inbox-small-cells">
-                                                    <div class="checker">
-                                                        <span>
-                                                            <input type="checkbox" name="replied" checked="checked" class="mail-checkbox custom-checkbox"  >
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="inbox-small-cells">
-                                                    <i class="livicon" data-n="star-full" data-s="15"></i>
-                                                </td>
-                                                <td class="view-message hidden-xs" style="min-width: 150px;">
-                                                    <a href="#">
-                                                        <img src="#" data-src="holder.js/25x25/#000:#fff" class="img-circle img-responsive pull-left" alt="Image">{{ (\App\User::where('id', $chat->receiver_id)->first())->name }}
-                                                    </a>
-                                                </td>
-                                                <td class="view-message">
-                                                    <a href="view_mail.html">
-                                                        {{ $chat->description }}
-                                                    </a>
-                                                </td>
-                                                <td class="view-message inbox-small-cells">
-                                                    <a href="#" class="livicon" data-name="info" data-size="14" data-color="#333" title="View Details" data-toggle="modal" data-target="#showModal{{ $chat->id }}"></a>
-                                                </td>
-                                                <td class="view-message text-right" style="min-width: 100px;">
-                                                    <a href="#">{{ $chat->created_at }}</a>
-                                                </td>
-                                            </tr>
-                                            <div class="modal fade modal-fade-in-scale-up" tabindex="-1" id="showModal{{ $chat->id }}" role="dialog" aria-labelledby="modalLabelfade" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header bg-primary">
-                                                            <h4 class="modal-title" id="modalLabelfade">Message {{ $chat->id }} Details</h4>
+                                        <div class="col-md-12">
+                                            <hr>
+                                            <h4 class="font-medium m-t-30 text-center"> Choose Update Profile Image </h4>
+                                            <hr>
+                                            <form enctype="multipart/form-data" action="{{ route('profile.update') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-center" style=" padding: 5px;">
+                                                            <input type="file" name="profile_image" accept=".jpg, .png, .jpeg" class="pull-left">
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            From
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->sen_name }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12" style="border-bottom: thin solid #e5e5e5;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Sender Email
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->sen_email }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Message Topic
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->topic }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px
-                                                                        ;">
-                                                                            Message Details
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->description }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12" style="border-top: thin solid #e5e5e5;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Sent To
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            @if($chat->receiver_id == Auth::user()->id) You @else {{ (\App\User::where('id', $chat->receiver_id)->first())->name }} @endif
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Sender's Designation
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->sending_profile }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Receiver's Designation
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->receiving_profile }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4 text-right" style="border-right: thin solid gray; padding: 5px;">
-                                                                            Date &amp; Time Sent
-                                                                        </div>
-                                                                        <div class="col-md-8 text-center">
-                                                                            {{ $chat->created_at }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn  btn-primary" data-dismiss="modal">Close!</button>
+                                                        <div class="col-md-6 text-right" style="padding: 5px;">
+                                                            <button type="submit" class="btn btn-sm btn-success btn-rounded pull-right" >UPDATE IMAGE</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            </form>
+                                            <hr>
+                                        </div>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div id="tab-change-pwd2" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12 pd-top">
+
+                                        <form class="form-horizontal form-material" action="{{ route('password.update') }}" method="POST">
+                                        @csrf
+                                        {{-- method_field('PATCH') --}}
+                                        @foreach ($errors->all() as $error)
+                                            <p class="alert alert-danger">{{ $error }}</p>
+                                        @endforeach
+
+                                        @if (session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Previous Password <span class="text-danger">*</span></label>
+                                            <div class="col-md-12">
+                                                <input type="password" placeholder="Previously used password" name="previous_password" class="form-control form-control-line" required>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label class="col-md-12">New Password <span class="text-danger">*</span></label>
+                                            <div class="col-md-12">
+                                                <input type="password" placeholder="Enter new password" name="password" class="form-control form-control-line" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Confirm Password <span class="text-danger">*</span></label>
+                                            <div class="col-md-12">
+                                                <input type="password" placeholder="Confirm Password" name="confirm_password" class="form-control form-control-line" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-danger">Update Account Password</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

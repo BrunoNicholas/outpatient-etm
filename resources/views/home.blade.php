@@ -22,7 +22,7 @@
 <?php $remove[] = "'"; $remove[] = '"'; $remove[] = "-";?>
 @section('content')
     @role(['super-admin','admin','human_resource','hr_admin'])
-        @include('notify')
+        @include('layouts.includes.admin_notify')
     @endrole
     <div class="number hidden" id="myTargetElement1"></div>
     <h4 class="hidden" id="myTargetElement1.1"></h4>

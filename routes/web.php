@@ -86,7 +86,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
 		'uses' => 'AdminPageController@index',
 	]);
 
-	Route::get('/locked/{id}', [
+	Route::get('/locked/', [
 		'as'	=> 'lock',
 		'uses'	=> 'PagesController@lock',
 	]);
@@ -96,12 +96,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
 		'uses'	=> 'PagesController@unlock',
 	]);
 
-	Route::get('/home/{id}/profile/', [
-		'as'	=> 'home.profile',
-		'uses'	=> 'PagesController@profile',
-	]);
-
-	Route::get('/home/{id}/messaging/', [
+	Route::get('/home/profiles/messaging/', [
 		'as'	=> 'home.messaging',
 		'uses'	=> 'PagesController@messaging',
 	]);

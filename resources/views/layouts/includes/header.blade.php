@@ -61,7 +61,7 @@
                 </li>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('images/favicon.png') }}" width="35" class="img-circle img-responsive pull-left" height="35" alt="{{ Auth::user()->name }}">
+                        <img src="{{ asset('files/profile/images/'.Auth::user()->profile_image) }}" width="35" class="img-circle img-responsive pull-left" height="35" alt="{{ Auth::user()->name }}">
                         <div class="riot">
                             <div>
                                 {{ Auth::user()->name }}
@@ -74,12 +74,12 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
-                            <img src="{{ asset('images/favicon.png') }}" width="90" class="img-circle img-responsive" height="90" alt="User Image" />
+                            <img src="{{ asset('files/profile/images/'.Auth::user()->profile_image) }}" width="90" class="img-circle img-responsive" height="90" alt="User Image" />
                             <p class="topprofiletext">{{ Auth::user()->name }} <br> <small>{{ Auth::user()->role }}</small></p>
                         </li>
                         <!-- Menu Body -->
                         <li>
-                            <a href="{{ route('home.profile', Auth::user()->id) }}">
+                            <a href="{{ route('profile') }}">
                                 <i class="livicon" data-name="user" data-s="18"></i> My Profile
                             </a>
                         </li>

@@ -234,7 +234,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="{{ route('home.profile', Auth::user()->id) }}">
+                                <a href="{{ route('profile') }}">
                                     <i class="fa fa-angle-double-right"></i> Profile
                                 </a>
                             </li>

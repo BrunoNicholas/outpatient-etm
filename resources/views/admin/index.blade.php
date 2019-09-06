@@ -26,7 +26,8 @@
     </ol>
 @endsection
 @section('content')
-	@include('notify')
+	@include('layouts.includes.admin_notify')
+	@include('layouts.includes.notifications')
 	<div class="row">
 	    <div class="col-lg-8">
 	        <ul class="nav  nav-tabs ">
