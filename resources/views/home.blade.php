@@ -74,53 +74,51 @@
             <div class="panel panel-danger">
                 <div class="panel-heading border-light">
                     <h4 class="panel-title">
-                        <i class="livicon" data-name="mail" data-size="18" data-color="white" data-hc="white" data-l="true"></i> Send Message
+                        <i class="livicon" data-name="mail" data-size="18" data-color="white" data-hc="white" data-l="true"></i> Quick Menu
                     </h4>
                 </div>
                 <div class="panel-body no-padding">
-                    <div class="compose row">
-                        <form action="{{ route('chats.store') }}" method="POST">
-                            {{ csrf_field() }}
-
-                            @foreach ($errors->all() as $error)
-                                <p class="alert alert-danger">{{ $error }}</p>
-                            @endforeach
-
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    
                                 </div>
-                            @endif
-
-                            <input type="hidden" name="sender_id" value="{{ Auth::user()->id }}">
-
-                            <input type="hidden" name="sen_email" value="{{ Auth::user()->email }}">
-
-                            <input type="hidden" name="sen_name" value="{{ Auth::user()->name }}">
-
-                            <label class="col-md-3 hidden-xs">To:</label>
-                            <select name="receiver_id" class="col-md-9 col-xs-9" tabindex="1" style="padding: 5px; margin-bottom: 3px; border-radius: 5px;">
-                                @foreach( \App\User::all() as $user)
-                                    <option  value="{{ $user->id }}">{{ $user->email }}</option>
-                                @endforeach
-                            </select>
-                            <input type="hidden" name="sending_profile" value="{{ Auth::user()->role }}">
-                            <div class="clear"></div>
-
-                            <label class="col-md-3 hidden-xs">Subject:</label>
-                            <input type="text" name="topic" class="col-md-9 col-xs-9" tabindex="1" placeholder="Subject" required />
-
-                            <div class="clear"></div>
-
-                            <div class='box-body'>
-                                <textarea name="description" class="textarea textarea_home resize_vertical" placeholder="Write message content here" required></textarea>                                
+                                <div class="card-body">
+                                    
+                                </div>
                             </div>
-
-                            <br />
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-danger">Send</button>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    
+                                </div>
+                                <div class="card-body">
+                                    
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    
+                                </div>
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    
+                                </div>
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

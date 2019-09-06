@@ -13,7 +13,8 @@ use App\Models\Leave;
 use App\Models\Activity;
 use App\Models\Team;
 
-class User extends Authenticatable implements MustVerifyEmailContract
+// class User extends Authenticatable implements MustVerifyEmailContract
+class User extends Authenticatable
 {
     use Notifiable;
     use EntrustUserTrait;

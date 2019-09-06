@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\User;
+use Auth;
 
 class PagesController extends Controller
 {
@@ -13,9 +14,9 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function lock($id)
+    public function lock()
     {
-    	$user = User::find($id);
+    	$user = Auth::user();
     	return view('web.lock',compact('user'));
     }
     /**

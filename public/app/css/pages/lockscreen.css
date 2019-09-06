@@ -141,5 +141,5 @@ html, body {
 }
 
 .avatar {
-    background-image: url('../../img/authors/avatar3.jpg');
+    background-image: url('./files/profile/images/{{ Auth::user()->profile_image; }}');
 }

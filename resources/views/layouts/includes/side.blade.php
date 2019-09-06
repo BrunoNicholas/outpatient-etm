@@ -20,8 +20,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="livicon" data-name="users" title="Users List" data-size="25" data-c="#01bc8c" data-hc="#01bc8c" data-loop="true"></i>
+                        <a href="{{ route('profile') }}" title="Go to my profile">
+                            <i class="livicon" data-name="user" title="Go to my profile" data-size="25" data-c="#01bc8c" data-hc="#01bc8c" data-loop="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -35,7 +35,7 @@
                 <li>
                     <a href="#">
                         <i class="livicon" data-name="home" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
-                        <span class="title"> Home Starts </span>
+                        <span class="title"> START </span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -45,40 +45,40 @@
                                 <i class="fa fa-angle-double-right"></i> Home
                             </a>
                         </li>
+                        @role(['super-admin','admin'])
                         <li>
                             <a href="{{ route('admin') }}">
                                 <i class="fa fa-angle-double-right"></i> Administrator
                             </a>
                         </li>
+                        @endrole
                     </ul>
                 </li>
-                @role(['super-admin','admin','pno','pno_admin'])
-                    <li>
-                        <a href="#">
-                            <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
-                            <span class="title"> Settings &amp;Profile </span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-angle-double-right"></i> Inbox
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('profile') }}">
-                                    <i class="fa fa-angle-double-right"></i> My Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-angle-double-right"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endrole
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                        <span class="title"> Settings &amp; Messaging </span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{ route('messages.index','inbox') }}">
+                                <i class="fa fa-angle-double-right"></i> Inbox
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('profile') }}">
+                                <i class="fa fa-angle-double-right"></i> My Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                                <i class="fa fa-angle-double-right"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @role(['super-admin','admin','pno','pno_admin'])
                     <li>
                         <a href="#">
