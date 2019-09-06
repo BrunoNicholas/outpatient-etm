@@ -20,6 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->integer('task_id')->unsigned();
             $table->integer('disease_case_id')->unsigned()->onDelete('cascade');
             $table->integer('client')->unsigned()->onDelete('cascade');
+            $table->string('location')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->default('active');
             $table->timestamps();

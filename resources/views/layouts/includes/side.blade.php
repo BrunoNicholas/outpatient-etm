@@ -40,7 +40,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="{{ route('home') }}">
+                            <a href="@if (Auth::user()->role == 'super-admin' || Auth::user()->role == 'admin')
+                                {{ route('home.user') }} @else {{ route('home') }} @endif">
                                 <i class="fa fa-angle-double-right"></i> Home
                             </a>
                         </li>

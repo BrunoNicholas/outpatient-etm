@@ -11,7 +11,7 @@
     <link href="{{ asset('app/css/pages/advmodals.css') }}" rel="stylesheet" />
 @endsection
 @section('location')
-	<h1>Welcome to your Dashboard</h1>
+	<h1>Administrator | {{ Auth::user()->name }}</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">

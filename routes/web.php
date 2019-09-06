@@ -22,11 +22,6 @@ Route::get('/public', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix'	=> 'admin', 'middleware'	=> ['auth','verified']], function()
-{
-	Route::resource('/users', 'UserController');
-});
-
 Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function(){
 	Route::resource('incidents', 'IncidentController');
 	Route::resource('/{type}/messages', 'MessageController');
@@ -47,7 +42,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function
 
 	Route::get('/user', [
 		'as' 	=> 'home.user',
-		'uses'	=> 'UserPageController@home',
+		'uses'	=> 'HomeController@userIndex',
 	]);
 	Route::get('/user/profile/settings', [
 		'as' 	=> 'settings',
@@ -67,7 +62,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth','verified']], function
 	]);
 });
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth','verified']], function(){
 	Route::resource('/home/admin/users', 'UserController');
 	Route::resource('/home/admin/roles', 'RoleController');
 

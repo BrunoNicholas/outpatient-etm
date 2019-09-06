@@ -21,6 +21,7 @@ class Activity extends Model
     	'disease_case_id',
     	'client',
     	'description',
+        'location',
     	'status',
     ];
 

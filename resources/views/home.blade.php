@@ -1,6 +1,14 @@
 @extends('layouts.site')
 
 @section('title') Home @endsection
+@section('styles')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" 
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" 
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" 
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" 
+        crossorigin=""></script>
+@endsection
 @section('location')
     <h1>Welcome to your Dashboard</h1>
     <ol class="breadcrumb">
@@ -11,6 +19,7 @@
         </li>
     </ol>
 @endsection
+<?php $remove[] = "'"; $remove[] = '"'; $remove[] = "-";?>
 @section('content')
     @role(['super-admin','admin','human_resource','hr_admin'])
         @include('notify')
@@ -46,30 +55,18 @@
                                         <span>Collapse</span>
                                     </a>
                                 </li>
-                                <!-- <li>
-                                    <a class="panel-refresh" href="#">
-                                        <i class="fa fa-refresh"></i>
-                                        <span>Refresh</span>
-                                    </a>
-                                </li> -->
                                 <li>
                                     <a class="panel-config" href="#panel-config" data-toggle="modal">
                                         <i class="fa fa-wrench"></i>
                                         <span>Configurations</span>
                                     </a>
                                 </li>
-                                <!-- <li>
-                                    <a class="panel-expand" href="#">
-                                        <i class="fa fa-expand"></i>
-                                        <span>Fullscreen</span>
-                                    </a>
-                                </li> -->
                             </ul>
                         </div>
                     </h3>
                 </div>
                 <div class="panel-body nopadmar">
-                    <div id="world-map-markers" style="width:100%; height:300px;"></div>
+                    <div id="map" style="width:100%; height:300px;"></div>
                 </div>
             </div>
         </div>
@@ -131,4 +128,36 @@
     </div>
 @endsection
 @section('scripts')
+    <script>
+
+        var cities = L.layerGroup();
+
+        regions = {{ str_replace( $remove, "", $gpsponts) }};
+
+        @for ($i = 0; $i<$ptNum; $i++)
+        L.marker(regions[{{ $i }}]).bindPopup('Reported Incident.').addTo(cities)@if($i<($ptNum-1)),
+@else;
+@endif
+        @endfor
+
+        var mbAttr = 'Map data &copy; {{ config('app.name') }}, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> ',
+            mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+        var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+            streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+        var map = L.map('map', {
+            center: [1.735574, 32.662354],
+            zoom: 5.5,
+            layers: [grayscale, cities]
+        });
+        var baseLayers = {
+            "Grayscale": grayscale,
+            "Streets": streets
+        };
+        var overlays = {
+            "Cities": cities
+        };
+        L.control.layers(baseLayers, overlays).addTo(map);
+
+    </script>
 @endsection
