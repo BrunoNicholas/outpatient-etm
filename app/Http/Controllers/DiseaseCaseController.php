@@ -48,7 +48,14 @@ class DiseaseCaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'case_name'     => 'required',
+            'disease_id'    => 'required',
+            'status'    => 'required',
+        ]);
+
+        DiseaseCase::create($request->all());
+        return redirect()->route('cases.index')->with('success','Disease case record added successfully!');
     }
 
     /**
