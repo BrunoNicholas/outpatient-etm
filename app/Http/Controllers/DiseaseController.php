@@ -82,7 +82,8 @@ class DiseaseController extends Controller
             'disease_name'      => 'required',
             'status'    => 'required',
         ]);
-
+        Disease::find($id)->update($request->all());
+        return redirect()->route('diseases.index')->with('success','Disease record updated successfully!');
     }
 
     /**

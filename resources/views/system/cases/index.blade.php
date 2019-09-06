@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/vendors/datatables/css/scroller.bootstrap.css') }}" />
 @endsection
 @section('location')
-	<h1>The System Users</h1>
+	<h1>Disease Cases - {{ config('app.name') }}</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">
@@ -36,13 +36,13 @@
         	<div class="panel panel-danger filterable">
         		<div class="panel-body text-center">
     				<div class="row">
-        				<a href="{{ route('cases.create') }}" class="btn btn-primary">Add New</a>
+        				<a href="{{ route('cases.create') }}" class="btn btn-primary btn-block">Add New</a>
         				<hr>
-        				<a href="{{ route('home') }}" class="btn btn-default">Home</a>
+        				<a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
         				<hr>
-        				<a href="#" class="btn btn-default">Tracker</a>
+        				<a href="#" class="btn btn-default btn-block">Tracker</a>
         				<hr>
-        				<a href="#" class="btn btn-default">Tracker</a>
+        				<a href="#" class="btn btn-default btn-block">Tracker</a>
         			</div>
         		</div>
         	</div>
@@ -50,7 +50,7 @@
     </div>
 @endsection
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('app/vendors/datatables/js/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('app/vendors/datatables/js/jquery.dataTables.js') }}"></script>
     <script type="text/javascript" src="{{ asset('app/vendors/jeditable/js/jquery.jeditable.js') }}"></script>
     <script type="text/javascript" src="{{ asset('app/vendors/datatables/js/dataTables.bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ asset('app/vendors/datatables/js/dataTables.buttons.js') }}"></script>

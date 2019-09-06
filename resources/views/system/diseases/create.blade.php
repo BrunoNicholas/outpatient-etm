@@ -92,13 +92,13 @@
             <div class="panel panel-danger filterable">
                 <div class="panel-body text-center">
                     <div class="row">
-                        <a href="{{ route('diseases.index') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('diseases.index') }}" class="btn btn-primary btn-block">Back</a>
                         <hr>
-                        <a href="{{ route('home') }}" class="btn btn-default">Home</a>
+                        <a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
                         <hr>
-                        <a href="#" class="btn btn-default">Tracker</a>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
                         <hr>
-                        <a href="#" class="btn btn-default">Tracker</a>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
                     </div>
                 </div>
             </div>
