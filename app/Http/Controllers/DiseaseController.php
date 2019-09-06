@@ -14,7 +14,7 @@ class DiseaseController extends Controller
      */
     public function index()
     {
-        $diseases = Disease::all();
+        $diseases = Disease::latest()->paginate();
         return view('system.diseases.index',compact('diseases'));
     }
 
@@ -37,9 +37,7 @@ class DiseaseController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name'      => 'required',
-            'frequency' => 'required',
-            'description'=> 'required',
+            'disease_name'      => 'required',
             'status'    => 'required',
         ]);
 

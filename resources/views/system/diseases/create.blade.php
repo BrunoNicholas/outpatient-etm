@@ -23,7 +23,7 @@
 @section('content')
     @include('layouts.includes.notifications')
     <div class="row ">
-        <div class="col-md-10 col-sm-8">
+        <div class="col-md-9 col-sm-8">
             <div class="panel panel-primary" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -51,9 +51,10 @@
                         <fieldset>
                             <!-- Name input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">Name</label>
+                                <label class="col-md-3 control-label" for="name">Disease Name</label>
                                 <div class="col-md-9">
-                                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control"></div>
+                                    <input id="name" name="disease_name" type="text" placeholder="Your name" class="form-control">
+                                </div>
                             </div>
                             <input type="hidden" name="frequency" value="1">
                             <!-- Message body -->
@@ -64,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Description</label>
+                                <label class="col-md-3 control-label" for="message">Disease Status</label>
                                 <div class="col-md-9">
                                     <select class="form-control" name="status">
                                         <option value="Severe">Severe</option>
@@ -75,29 +76,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <!--
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">File Upload</label>
-                                    <div class="col-md-9">
-                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput">
-                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                <span class="fileinput-filename"></span>
-                                            </div>
-                                            <span class="input-group-addon btn btn-default btn-file">
-                                                <span class="fileinput-new">Select file</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="file" name="..."></span>
-                                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            -->
-                            <!-- Form actions -->
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
                                     <div class="col-md-4 pull-right">
-                                        <button type="submit" class="btn btn-responsive btn-primary btn-sm btn-block">Add Record</button>
+                                        <button type="submit" class="btn btn-responsive btn-primary btn-sm btn-block">Add Disease Record</button>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 col-sm-8">
+        <div class="col-md-3 col-sm-8">
             <div class="panel panel-danger filterable">
                 <div class="panel-body text-center">
                     <div class="row">

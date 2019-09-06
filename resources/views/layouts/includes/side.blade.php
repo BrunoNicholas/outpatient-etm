@@ -1,4 +1,3 @@
-<!-- side.blade.php -->
 <aside class="left-side sidebar-offcanvas">
     <section class="sidebar ">
         <div class="page-sidebar  sidebar-nav">
@@ -27,7 +26,6 @@
                 </ul>
             </div>
             <div class="clearfix"></div>
-            <!-- BEGIN SIDEBAR MENU -->
             <ul id="menu" class="page-sidebar-menu">
                 <li class="text-center">
                     <span class="title"><b style="color: #fff;"> <i class="fa fa-dashboard"></i> START </b></span>
@@ -226,8 +224,6 @@
                     </li>
                 @endrole
             </ul>
-            <!-- END SIDEBAR MENU -->
         </div>
     </section>
-    <!-- /.sidebar -->
 </aside>

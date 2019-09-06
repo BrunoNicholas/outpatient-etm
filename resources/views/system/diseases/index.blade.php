@@ -37,23 +37,23 @@
                     </h3>
                 </div>
                 <div class="panel-body table-responsive">
-                    <table class="table table-striped table-hover" id="sample_5">
+                    <table class="table table-striped table-bordered" id="table1">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Disease Name</th>
                                 <th>Frequency</th>
+                                <th>Disease Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Disease Name</th>
                                 <th>Frequency</th>
+                                <th>Disease Status</th>
+                                <th>Actions</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -61,13 +61,14 @@
                         	@foreach($diseases as $disease)
 	                            <tr>
 	                                <td>{{ ++$i }}</td>
-	                                <td>{{ $disease->name }}</td>
+	                                <td>{{ $disease->disease_name }}</td>
+                                    <td>{{ $disease->frequency }}</td>
 	                                <td>{{ $disease->status }}</td>
 	                                <td style="width: 200px;">
-	                                	<a href="#" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View</a>
-	                                	<a href="#" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit</a>
+	                                	<a href="{{ route('diseases.show', $disease->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View</a>
+	                                	<a href="{{ route('diseases.edit', $disease->id) }}" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit</a>
 	                                </td>
-	                                <td>{{ $disease->frequency }}</td>
+	                                
 	                            </tr>
                             @endforeach
                         </tbody>
