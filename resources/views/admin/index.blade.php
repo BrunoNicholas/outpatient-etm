@@ -173,7 +173,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-md-4"><a href="{{ route('users.index') }}"><button class="btn btn-info btn-block">All users</button></a></div>
+                            <div class="col-md-4"><a href="{{ route('users.index') }}"><button class="btn btn-info btn-block"><i class="fa-users fa"></i> All users </button></a></div>
                         </div>
 	                </div>
 	            </div>
@@ -279,7 +279,7 @@
                                     </table>
                                 </div>
                                 @role(['super-admin'])
-                                	<div class="col-md-4 pull-right"><a href="{{ route('roles.index') }}"><button class="btn btn-warning btn-block">All User Roles</button></a></div>
+                                	<div class="col-md-4 pull-right"><a href="{{ route('roles.index') }}"><button class="btn btn-warning btn-block"><i class="fa-list fa"></i> All User Roles</button></a></div>
                                 @endrole
                             </div>
                         </div>

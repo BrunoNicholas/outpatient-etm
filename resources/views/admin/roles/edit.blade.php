@@ -32,7 +32,7 @@
 @section('content')
     @include('layouts.includes.notifications')
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="panel panel-danger" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -104,6 +104,22 @@
                             </div>
                         </fieldset>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel box-v4 text-center">
+                <div class="panel-body">
+                    <h4 class="panel-title">  User Role Operations </h4>
+                    <hr>
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <a href="{{ route('roles.index') }}" class="btn btn-primary btn-block"> User Roles </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ route('admin') }}" class="btn btn-primary btn-block"> Admin </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

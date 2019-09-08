@@ -130,6 +130,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="panel box-v4 text-center">
+                <div class="panel-body">
+                    <h4 class="panel-title">  User Operations </h4>
+                    <hr>
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <a href="{{ route('users.index') }}" class="btn btn-primary btn-block"> Users </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ route('admin') }}" class="btn btn-primary btn-block"> Admin </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

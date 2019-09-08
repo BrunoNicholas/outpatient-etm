@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/vendors/datatables/css/scroller.bootstrap.css') }}" />
 @endsection
 @section('location')
-	<h1>The System Users</h1>
+	<h1>The User Roles</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">
@@ -39,7 +39,7 @@
                 <div class="panel-heading clearfix  ">
                     <div class="panel-title pull-left">
                         <div class="caption">
-                            <i class="livicon" data-name="users" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> All System Roles
+                            <i class="livicon" data-name="list" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i> All System Roles <a href="{{ route('roles.create') }}"><button class="btn btn-success btn-xs" title="Add new user category/role"><i class="fa-plus fa"></i> Add New </button></a>
                         </div>
                     </div>
                     <div class="tools pull-right"></div>
