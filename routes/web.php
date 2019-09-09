@@ -67,8 +67,8 @@ Route::group(['middleware' => ['auth','verified']], function(){
 	Route::resource('/home/chats', 'ChatController');
 
 	Route::resource('/home/projects', 'ProjectController');
-	Route::resource('/home/projects/activities', 'ActivityController');
-	Route::resource('/home/projects/tasks', 'TasksController');
+	Route::resource('/home/project/activities', 'ActivityController');
+	Route::resource('/home/project/tasks', 'TasksController');
 	Route::resource('/home/users/teams', 'TeamController');
 
 	Route::resource('/home/medical/cases', 'DiseaseCaseController');

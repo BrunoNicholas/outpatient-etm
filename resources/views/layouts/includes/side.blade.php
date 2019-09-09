@@ -134,6 +134,11 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
+                                <a href="{{ route('projects.index') }}">
+                                    <i class="fa fa-angle-double-right"></i> My Projects
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('teams.index') }}">
                                     <i class="fa fa-angle-double-right"></i> Medical Teams
                                 </a>
@@ -201,11 +206,6 @@
                             <li>
                                 <a href="">
                                     <i class="fa fa-angle-double-right"></i> Infor
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('projects.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> My Projects
                                 </a>
                             </li>
                         </ul>

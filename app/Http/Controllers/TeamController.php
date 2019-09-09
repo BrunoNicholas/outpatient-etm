@@ -66,6 +66,9 @@ class TeamController extends Controller
     public function show($id)
     {
         $team = Team::find($id);
+        if (!$team) {
+            return back()->with('danger','Sorry, This team might be deleted or is missing!');
+        }
         return view('p_n_o.teams.show',compact('team')); 
     }
 
@@ -78,6 +81,9 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Team::find($id);
+        if (!$team) {
+            return back()->with('danger','Sorry, This team might be deleted or is missing!');
+        }
         return view('p_n_o.teams.edit',compact('team'));        
     }
 
@@ -110,6 +116,6 @@ class TeamController extends Controller
     {
         $item = Team::find($id);
         $item->delete();
-        return redirect()->route('diseases.index')->with('success', 'Team deleted successfully!');
+        return redirect()->route('teams.index')->with('success', 'Team deleted successfully!');
     }
 }

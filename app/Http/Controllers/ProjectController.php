@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\DiseaseCase;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // 
+        $projects = Project::latest()->paginate();
+        return view('p_n_o.projects.index',compact(['projects']));
     }
 
     /**
@@ -24,7 +26,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $projects   = Project::all();
+        $cases      = DiseaseCase::all();
+        return view('p_n_o.projects.create',compact(['projects','cases']));
     }
 
     /**
@@ -35,7 +39,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'project_name'      => 'required',
+            'disease_case_id'   => 'required',
+            'user_id'           => 'required',
+            'start_date'        => 'required',
+            'status'            => 'required',
+        ]);
+
+        Project::create($request->all());
+        return redirect()->route('projects.index')->with('success','New project saved successfully!');
     }
 
     /**
@@ -44,9 +57,13 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
+        $project = Project::find($id);
+        if (!$project) {
+            return back()->with('danger', 'Sorry, this project must either be deleted for not availaable');
+        }
+        return view('p_n_o.projects.show', compact(['project']));
     }
 
     /**
@@ -55,9 +72,14 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        $project    = Project::find($id);
+        $cases      = DiseaseCase::all();
+        if (!$project) {
+            return back()->with('danger', 'Sorry, this project must either be deleted for not availaable');
+        }
+        return view('p_n_o.projects.edit', compact(['project','cases']));
     }
 
     /**
@@ -67,9 +89,18 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'project_name'      => 'required',
+            'disease_case_id'   => 'required',
+            'user_id'           => 'required',
+            'start_date'        => 'required',
+            'status'            => 'required',
+        ]);
+
+        Project::find($id)->update($request->all());
+        return redirect()->route('projects.index')->with('success','Project updated successfully!');
     }
 
     /**
@@ -78,8 +109,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        $item = Project::find($id);
+        $item->delete();
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');
     }
 }

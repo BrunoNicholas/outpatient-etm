@@ -21,7 +21,7 @@ class Tasks extends Model
     	'topic',
     	'team_id',
         'user_id',
-    	'team_members'
+    	'team_members',
     	'description',
     	'status',
     ];
