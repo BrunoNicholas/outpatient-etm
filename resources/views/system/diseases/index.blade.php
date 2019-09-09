@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/vendors/datatables/css/scroller.bootstrap.css') }}" />
 @endsection
 @section('location')
-	<h1>The Diseases Stored In The System</h1>
+	<h1>The Disease Records - {{ config('app.name') }}</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">

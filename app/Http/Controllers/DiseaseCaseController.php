@@ -79,7 +79,8 @@ class DiseaseCaseController extends Controller
     public function edit($id)
     {
         $case = DiseaseCase::find($id);
-        return view('system.cases.edit',compact('case'));
+        $diseases = Disease::all();
+        return view('system.cases.edit',compact(['case','diseases']));
     }
 
     /**
@@ -91,7 +92,14 @@ class DiseaseCaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'case_name'     => 'required',
+            'disease_id'    => 'required',
+            'status'    => 'required',
+        ]);
+
+        DiseaseCase::find($id)->update($request->all());
+        return redirect()->route('cases.index')->with('success','Disease case record updated successfully!');
     }
 
     /**

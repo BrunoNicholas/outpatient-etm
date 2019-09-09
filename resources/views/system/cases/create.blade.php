@@ -18,14 +18,19 @@
                 <i class="livicon" data-name="home" data-size="14" data-color="#333" data-hovercolor="#333"></i> Home
             </a>
         </li>
-        <li>
-            <a href="{{ route('diseases.index') }}">
-                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Diseases
+        <li class="{{ route('diseases.index') }}">
+            <a href="#">
+                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Records
+            </a>
+        </li>
+        <li class="{{ route('cases.index') }}">
+            <a href="#">
+                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Cases
             </a>
         </li>
         <li class="active">
-            <a href="#">
-                <i class="livicon" data-name="brief-case" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Records
+            <a href="javascript:void(0)">
+                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Add Case Record
             </a>
         </li>
     </ol>

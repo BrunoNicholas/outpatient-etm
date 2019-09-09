@@ -51,7 +51,7 @@
                                 <h4>Disease Description</h4>
                             </div>
                             <div class="col-md-10 text-center">
-                                <textarea class="form-control" style="border: none; background: #fff;" disabled>{{ $disease->description }}</textarea>
+                                <textarea class="form-control" rows="5" style="border: none; background: #fff;" disabled>{{ $disease->description }}</textarea>
                             </div>
                         </div>
                         <hr>
@@ -60,7 +60,7 @@
                                 <h4>Disease Frequest</h4>
                             </div>
                             <div class="col-md-10 text-center">
-                                <span>{{ $disease->frequency }} Frequest</span>
+                                <span>{{ $disease->frequency }} Stored Occurance(s)</span>
                             </div>
                         </div>
                         <hr>

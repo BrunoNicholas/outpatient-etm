@@ -19,9 +19,15 @@
                 <i class="livicon" data-name="home" data-size="14" data-color="#333" data-hovercolor="#333"></i> Home
             </a>
         </li>
-        <li class="active">
+        </li>
+        <li class="{{ route('diseases.index') }}">
             <a href="#">
                 <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Records
+            </a>
+        </li>
+        <li class="javascript:void(0)">
+            <a href="#">
+                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Cases
             </a>
         </li>
     </ol>
