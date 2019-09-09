@@ -128,20 +128,6 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="livicon" data-name="calendar" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
-                            <span class="title">Medics Management</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('leaves.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> All Leaves
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
                             <i class="livicon" data-name="users-ban" data-size="18" data-c="#5bc0de" data-hc="#5bc0de" data-size="18" data-loop="true"></i>
                             <span class="title">Medical Configuration</span>
                             <span class="fa arrow"></span>
@@ -160,6 +146,20 @@
                             <li>
                                 <a href="{{ route('activities.index') }}">
                                     <i class="fa fa-angle-double-right"></i> All Activities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="livicon" data-name="calendar" data-c="#01bc8c" data-hc="#01bc8c" data-size="18" data-loop="true"></i>
+                            <span class="title">Medics Management</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="{{ route('leaves.index') }}">
+                                    <i class="fa fa-angle-double-right"></i> All Leaves
                                 </a>
                             </li>
                         </ul>

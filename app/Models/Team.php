@@ -16,7 +16,7 @@ class Team extends Model
     	'team_name',
     	'user_id',
     	'team_members',
-    	'description'
+    	'description',
     	'status',
     ];
 
