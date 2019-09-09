@@ -50,14 +50,87 @@
                     </span>
                 </div>
                 <div class="panel-body">
+                    <form class="form-horizontal" action="{{ route('teams.update', $team->id) }}" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
 
+                        @foreach ($errors->all() as $error)
+                            <p class="alert alert-danger">{{ $error }}</p>
+                        @endforeach
 
-
-
-
-
-
-
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <fieldset>
+                            <!-- Name input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Team Name</label>
+                                <div class="col-md-9">
+                                    <input id="name" name="team_name" type="text" placeholder="Enter disease case name" class="form-control" value="{{ $team->team_name }}" autofocus required>
+                                </div>
+                                <input type="hidden" name="user_id" value="{{ $team->user_id }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Expected Total Members</label>
+                                <div class="col-md-9">
+                                    <input id="" name="team_members" value="{{ $team->team_members }}" type="number" placeholder="Enter expected number of team menbers" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Team Name</label>
+                                <div class="col-md-9">
+                                    <textarea name="description" type="text" placeholder="The team roles, description and more" class="form-control">{{ $team->description }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">Team Status</label>
+                                <div class="col-md-9">
+                                    <div class="form-control">
+                                        <input name="status" id="status1" name="radio" type="radio"  value="Active" > <label for="status1" @if ($team->status == 'Active')
+                                            checked
+                                        @endif>Active</label>
+                                        <input name="status" id="status2" name="radio" type="radio"  value="Approved" > <label for="status2" @if ($team->status == 'Approved')
+                                            checked
+                                        @endif>Approved</label>
+                                        <input name="status" id="status3" name="radio" type="radio"  value="Blocked" > <label for="status3" @if ($team->status == 'Blocked')
+                                            checked
+                                        @endif>Blocked</label>
+                                        <input name="status" id="status4" name="radio" type="radio"  value="Not Active" @if ($team->status == 'Not Active')
+                                            checked 
+                                        @endif> <label for="status4">Not Active</label>
+                                        <input name="status" id="status5" name="radio" type="radio"  value="Pending" > <label for="status5" @if ($team->status == '')
+                                            checked
+                                        @endif>Pending</label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <div class="col-md-4 pull-right">
+                                        <button type="submit" class="btn btn-responsive btn-info btn-sm btn-block"><i class="fa-tick fa"></i> Update Team Record</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-8">
+            <div class="panel panel-danger filterable">
+                <div class="panel-body text-center">
+                    <div class="row">
+                        <a href="{{ route('teams.index') }}" class="btn btn-danger btn-block">Back</a>
+                        <hr>
+                        <a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
+                        <hr>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
+                        <hr>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
+                    </div>
                 </div>
             </div>
         </div>
