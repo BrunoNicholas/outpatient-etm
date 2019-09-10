@@ -25,7 +25,7 @@
         </li>
         <li class="active">
             <a href="javascript:void(0)">
-                <i class="livicon" data-name="list" data-size="14" data-color="#333" data-hovercolor="#333"></i> Projects
+                <i class="livicon" data-name="list" data-size="14" data-color="#333" data-hovercolor="#333"></i> Medical Projects
             </a>
         </li>
     </ol>
@@ -34,11 +34,15 @@
     @include('layouts.includes.notifications')
     <div class="row ">
         <div class="col-md-10 col-sm-8">
-        	<div class="panel panel-info filterable">
+        	<div class="panel panel-success filterable">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">
-                        <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Medical Teams And Groups
+                        <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Medical Projects
                     </h3>
+                    <span class="panel-title pull-right" style="margin-top: 0px;">
+                        <i class="glyphicon glyphicon-chevron-up clickable"></i>
+                        <i class="glyphicon glyphicon-remove removepanel clickable"></i>
+                    </span>
                 </div>
                 <div class="panel-body table-responsive">
                     <table class="table table-striped table-bordered" id="table1">
@@ -70,17 +74,17 @@
                             	<tr>
                             		<td>{{ ++$i }}</td>
                             		<td>{{ $project->project_name }}</td>
-                            		<td>{{ $project->disease_case_id }}</td>
+                            		<td>{{ App\Models\DiseaseCase::where('id',$project->disease_case_id)->first()->case_name }}</td>
                             		<td>{{ $project->description }}</td>
                             		<td>{{ $project->start_date }}</td>
                             		<td>{{ $project->status }}</td>
-                            		<td>
+                            		<td style="min-width: 150px;">
                             			<div class="row">
                             				<div class="col-md-6">
-                            					<a href="{{ route('projects.show', $project->id) }}" class="btn btn-xs btn-info pull-left">View Details</a>
+                            					<a href="{{ route('projects.show', $project->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 35px;">Details</a>
                             				</div>
                             				<div class="col-md-6">
-                            					<a href="{{ route('projects.edit', $project->id) }}" class="btn btn-xs btn-primary pull-right btn-block">Edit Record</a>
+                            					<a href="{{ route('projects.edit', $project->id) }}" class="btn btn-xs btn-primary pull-right btn-block" style="min-width: 35px;">Edit</a>
                             				</div>
                             			</div>
                             		</td>
@@ -92,10 +96,10 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-8">
-        	<div class="panel panel-danger filterable">
+        	<div class="panel panel-success filterable">
         		<div class="panel-body text-center">
     				<div class="row">
-        				<a href="{{ route('projects.create') }}" class="btn btn-info btn-block">Add New</a>
+        				<a href="{{ route('projects.create') }}" class="btn btn-success btn-block">Add New</a>
         				<hr>
         				<a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
         				<hr>

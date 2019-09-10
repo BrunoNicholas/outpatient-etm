@@ -13,8 +13,8 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'case_id',  	// from disease_cases table
+        'project_name',
+        'disease_case_id',  	// from disease_cases table
         'start_date',
         'end_date',
         'user_id',

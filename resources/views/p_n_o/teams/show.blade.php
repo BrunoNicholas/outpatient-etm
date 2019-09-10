@@ -128,7 +128,7 @@
                                     {{ method_field('DELETE') }}
                                     <div class="tools">
                                         <button type="submit" class="btn btn-danger btn-rounded btn-block"
-                                            onclick="return confirm('You are about to delete this team record!\nThis is not reversible!')" title="Delete disea record completely"> Delete </button>
+                                            onclick="return confirm('You are about to delete this team record!\nThis is not reversible!')" title="Delete team record completely"> Delete </button>
                                     </div>
                                 </form>
                             </div>

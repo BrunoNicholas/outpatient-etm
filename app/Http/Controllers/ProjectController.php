@@ -61,7 +61,7 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         if (!$project) {
-            return back()->with('danger', 'Sorry, this project must either be deleted for not availaable');
+            return back()->with('danger', 'Sorry, this project must either be deleted for not available');
         }
         return view('p_n_o.projects.show', compact(['project']));
     }
@@ -77,7 +77,7 @@ class ProjectController extends Controller
         $project    = Project::find($id);
         $cases      = DiseaseCase::all();
         if (!$project) {
-            return back()->with('danger', 'Sorry, this project must either be deleted for not availaable');
+            return back()->with('danger', 'Sorry, this project must either be deleted for not available');
         }
         return view('p_n_o.projects.edit', compact(['project','cases']));
     }
@@ -113,6 +113,6 @@ class ProjectController extends Controller
     {
         $item = Project::find($id);
         $item->delete();
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');
+        return redirect()->route('projects.index')->with('danger', 'Project deleted successfully!');
     }
 }

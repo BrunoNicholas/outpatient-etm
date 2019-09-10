@@ -118,6 +118,6 @@ class TasksController extends Controller
     {
         $item = Tasks::find($id);
         $item->delete();
-        return redirect()->route('tasks.index')->with('success', 'Team deleted successfully!');
+        return redirect()->route('tasks.index')->with('danger', 'Team deleted successfully!');
     }
 }

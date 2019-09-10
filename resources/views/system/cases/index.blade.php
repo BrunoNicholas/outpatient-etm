@@ -73,11 +73,16 @@
                                     <td>{{ $case->disease_id }}</td>
                                     <td>{{ $case->treatment_plan }}</td>
                                     <td><textarea class="form-control" style="border: none;">{{ $case->description }}</textarea></td>
-                                    <td style="min-width: 200px;">
-                                        <a href="{{ route('cases.show', $case->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View Details</a>
-                                        <a href="{{ route('cases.edit', $case->id) }}" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit Record</a>
-                                    </td>
-                                    
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="{{ route('cases.show', $case->id) }}" class="btn btn-xs btn-block btn-info">Details</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a href="{{ route('cases.edit', $case->id) }}" class="btn btn-xs btn-block btn-primary">Edit</a>
+                                            </div>
+                                        </div>
+                                    </td>                                    
                                 </tr>
                             @endforeach
                         </tbody>

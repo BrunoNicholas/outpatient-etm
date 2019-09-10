@@ -116,6 +116,6 @@ class TeamController extends Controller
     {
         $item = Team::find($id);
         $item->delete();
-        return redirect()->route('teams.index')->with('success', 'Team deleted successfully!');
+        return redirect()->route('teams.index')->with('danger', 'Team deleted successfully!');
     }
 }

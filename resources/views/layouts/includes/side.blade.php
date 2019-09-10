@@ -135,7 +135,7 @@
                         <ul class="sub-menu">
                             <li>
                                 <a href="{{ route('projects.index') }}">
-                                    <i class="fa fa-angle-double-right"></i> My Projects
+                                    <i class="fa fa-angle-double-right"></i> Medical Projects
                                 </a>
                             </li>
                             <li>
