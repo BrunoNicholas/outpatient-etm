@@ -50,6 +50,9 @@ class LeaveController extends Controller
     public function show($id)
     {
         $leave = Leave::find($id);
+        if (!$leave) {
+            return back('warning','The disease record you seek is either missing or deleted!');
+        }
         return view('p_n_o.leaves.show',compact('leave'));
     }
 
@@ -62,6 +65,9 @@ class LeaveController extends Controller
     public function edit($id)
     {
         $leave = Leave::find($id);
+        if (!$leave) {
+            return back('warning','The disease record you seek is either missing or deleted!');
+        }
         return view('p_n_o.leaves.edit',compact('leave'));
     }
 

@@ -117,7 +117,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('users.index')->with('danger', 'User Not Found!');
+            return redirect()->route('users.index')->with('warning', 'User profile is either deleted or missing!');
         }
         return view('admin.users.show', compact('user'));
     }
@@ -133,7 +133,7 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::all();
         if (!$user) {
-            return redirect()->route('users.index')->with('danger', 'User Not Found!');
+            return redirect()->route('users.index')->with('warning', 'User profile is either deleted or missing!');
         }
         return view('admin.users.edit', compact('user','roles'));
     }

@@ -67,7 +67,7 @@ class TeamController extends Controller
     {
         $team = Team::find($id);
         if (!$team) {
-            return back()->with('danger','Sorry, This team might be deleted or is missing!');
+            return back()->with('warning','Sorry, This team might be deleted or is missing!');
         }
         return view('p_n_o.teams.show',compact('team')); 
     }
@@ -82,7 +82,7 @@ class TeamController extends Controller
     {
         $team = Team::find($id);
         if (!$team) {
-            return back()->with('danger','Sorry, This team might be deleted or is missing!');
+            return back()->with('warning','Sorry, This team might be deleted or is missing!');
         }
         return view('p_n_o.teams.edit',compact('team'));        
     }

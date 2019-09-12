@@ -14,8 +14,8 @@ class PatternTrackController extends Controller
      */
     public function index()
     {
-        $trackers = PatternTrack::all();
-        return view('p_n_o.logs.tracker',compact('trackers'));
+        $trackers = PatternTrack::latest()->paginate(50);
+        return view('system.pattern_tracker.index',compact('trackers'));
     }
 
     /**
@@ -25,7 +25,8 @@ class PatternTrackController extends Controller
      */
     public function create()
     {
-        //
+        $trackers = PatternTrack::latest()->paginate(100);
+        return view('system.pattern_tracker.create',compact('trackers'));
     }
 
     /**
@@ -47,7 +48,11 @@ class PatternTrackController extends Controller
      */
     public function show($id)
     {
-        //
+        $track = PatternTrack::find($id);
+        if (!$track) {
+            return back()->with('warning','The tracker record you look for is either missing or deleted!');
+        }
+        return view('system.pattern_tracker.show',compact(['track']));
     }
 
     /**
@@ -58,7 +63,11 @@ class PatternTrackController extends Controller
      */
     public function edit($id)
     {
-        //
+        $track = PatternTrack::find($id);
+        if (!$track) {
+            return back()->with('warning','The tracker record you look for is either missing or deleted!');
+        }
+        return view('system.pattern_tracker.edit',compact(['track']));
     }
 
     /**
@@ -83,6 +92,6 @@ class PatternTrackController extends Controller
     {
         $track = PatternTrack::find($id);
         $track->delete();
-        return redirect()->route('tracker.index')->with('success', 'Track Deleted Successfully!');
+        return redirect()->route('tracker.index')->with('success', 'Track deleted successfully!');
     }
 }

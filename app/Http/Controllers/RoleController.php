@@ -60,6 +60,9 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
+        if (!$role) {
+            return back()->with('warning','The role record is either missing or deleted!');
+        }
         return view('admin.roles.show', compact('role'));
     }
 
@@ -72,6 +75,9 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
+        if (!$role) {
+            return back()->with('warning','The role record is either missing or deleted!');
+        }
         $permissions = Permission::all();
 
         $permission_role = $role->perms()->pluck('id','id')->toArray();

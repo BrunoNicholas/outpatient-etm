@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/vendors/datatables/css/scroller.bootstrap.css') }}" />
 @endsection
 @section('location')
-	<h1>The System Users</h1>
+	<h1>The Pattern Tracks</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">
@@ -20,7 +20,7 @@
         </li>
         <li class="active">
             <a href="#">
-                <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Records
+                <i class="livicon" data-name="location" data-size="14" data-color="#333" data-hovercolor="#333"></i> Pattern Tracks
             </a>
         </li>
     </ol>

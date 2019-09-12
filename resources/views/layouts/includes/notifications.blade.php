@@ -1,6 +1,6 @@
 @if($message = Session::get('danger'))
 	<div class="alert alert-danger" style="margin: 10px;"> 
-		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 
+		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img" style="border-radius: 3px;"> 
 		 Abbort <i class="fa fa-times-circle"></i> : {{ $message }}
 	    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
 	    	<span aria-hidden="true">&times;</span> 
@@ -9,7 +9,7 @@
 @endif
 @if($message = Session::get('warning'))
 	<div class="alert alert-warning" style="margin: 10px;"> 
-		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 
+		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img" style="border-radius: 3px;"> 
 		 Warning <i class="fa fa-info-circle"></i> : <b>{{ $message }}</b>
 	    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 	    	<span aria-hidden="true">&times;</span> 
@@ -19,7 +19,7 @@
 {{--
 @if($message = Session::get('success'))
 	<div class="alert alert-success" style="margin: 10px;"> 
-		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 
+		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img" style="border-radius: 3px;"> 
 		 Success <i class="fa fa-check"></i> : <b>{{ $message }}</b>
 	    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
 	    	<span aria-hidden="true">&times;</span> 
@@ -29,7 +29,7 @@
 --}}
 @if($message = Session::get('info'))
 	<div class="alert alert-info" style="margin: 10px;"> 
-		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img"> 
+		<img src="{{ asset('files/profile/images/' . Auth::user()->profile_image) }}" width="30" class="rounded-circle" alt="img" style="border-radius: 3px;"> 
 		 Notice <i class="fa fa-lightbulb"></i> : <b>{{ $message }}</b>
 	    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
 	    	<span aria-hidden="true">&times;</span> 

@@ -54,6 +54,9 @@ class DiseaseController extends Controller
     public function show($id)
     {
         $disease = Disease::find($id);
+        if (!$disease) {
+            return back()->with('warning','The disease record you look for is either deleted or is missing!');
+        }
         return view('system.diseases.show',compact('disease'));        
     }
 
@@ -66,6 +69,9 @@ class DiseaseController extends Controller
     public function edit($id)
     {
         $disease = Disease::find($id);
+        if (!$disease) {
+            return back()->with('warning','The disease record you look for is either deleted or is missing!');
+        }
         return view('system.diseases.edit',compact('disease'));
     }
 

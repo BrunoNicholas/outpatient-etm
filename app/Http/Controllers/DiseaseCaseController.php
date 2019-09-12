@@ -67,6 +67,9 @@ class DiseaseCaseController extends Controller
     public function show($id)
     {
         $case = DiseaseCase::find($id);
+        if (!$case) {
+            return back()->with('warning', 'The disease case you look for is either missing or deleted!')
+        }
         return view('system.cases.show',compact('case'));
     }
 
@@ -80,6 +83,9 @@ class DiseaseCaseController extends Controller
     {
         $case = DiseaseCase::find($id);
         $diseases = Disease::all();
+        if (!$case) {
+            return back()->with('warning', 'The disease case you look for is either missing or deleted!')
+        }
         return view('system.cases.edit',compact(['case','diseases']));
     }
 

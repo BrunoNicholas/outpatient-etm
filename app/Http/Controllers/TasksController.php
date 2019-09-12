@@ -65,7 +65,7 @@ class TasksController extends Controller
     {
         $task = Tasks::find($id);
         if (!$task) {
-            return back()->with('danger','Sorry, This task might be deleted or is missing!');
+            return back()->with('warning','Sorry, This task might be deleted or is missing!');
         }
         return view('p_n_o.tasks.show',compact(['task']));
     }
@@ -82,7 +82,7 @@ class TasksController extends Controller
         $projects   = Project::all();
         $teams      = Team::all();
         if (!$task) {
-            return back()->with('danger','Sorry, This task might be deleted or is missing!');
+            return back()->with('warning','Sorry, This task might be deleted or is missing!');
         }
         return view('p_n_o.tasks.show',compact(['task','projects','teams']));
     }

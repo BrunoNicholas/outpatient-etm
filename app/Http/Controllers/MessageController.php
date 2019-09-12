@@ -261,7 +261,7 @@ class MessageController extends Controller
         $type       = 'inbox';
 
         if (!$message) {
-            return redirect()->route('messages.index',$type)->with('danger', 'Email Message Not Found!');
+            return redirect()->route('messages.index',$type)->with('warning', 'Email Message Not Found!');
         }
         if ($message->sender == Auth::user()->id) {
             return view('user.messages.show', compact(['message','type','id','users','allCount','inboxCount','trashCount','draftCount','sentCount','spamCount','impCount','urgCount','offCount','unoffCount','normalCount']));
@@ -280,7 +280,7 @@ class MessageController extends Controller
     {
         $message = Message::find($id);
         if (!$message) {
-            return redirect()->route('messages.index')->with('danger', 'Message Not Found!');
+            return redirect()->route('messages.index')->with('warning', 'Message Not Found!');
         }
         return view('user.message.edit', compact('message'));
     }

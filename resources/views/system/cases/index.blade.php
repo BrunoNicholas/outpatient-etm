@@ -72,7 +72,7 @@
                                     <td>{{ $case->case_name }}</td>
                                     <td>{{ App\Models\Disease::where('id',$case->disease_id)->first()->disease_name }}</td>
                                     <td>{{ $case->treatment_plan }}</td>
-                                    <td><textarea class="form-control" style="border: none;">{{ $case->description }}</textarea></td>
+                                    <td><textarea class="form-control" disabled style="border: none;">{{ $case->description }}</textarea></td>
                                     <td style="min-width: 100px;">
                                         <div class="row">
                                             <div class="col-md-6" style="padding: 1px;">
