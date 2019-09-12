@@ -67,9 +67,15 @@
                                     <td>{{ $disease->frequency }}</td>
 	                                <td>{{ $disease->status }}</td>
                                     <td><textarea class="form-control" style="border: none;">{{ $disease->description }}</textarea></td>
-	                                <td style="width: 200px;">
-	                                	<a href="{{ route('diseases.show', $disease->id) }}" class="btn btn-xs btn-info pull-left" style="min-width: 99px;">View</a>
-	                                	<a href="{{ route('diseases.edit', $disease->id) }}" class="btn btn-xs btn-primary pull-right" style="min-width: 99px;">Edit</a>
+	                                <td class="text-center">
+                                        <div class="row">
+                                            <div class="col-md-6" style="padding: 1px;">
+	                                	        <a href="{{ route('diseases.show', $disease->id) }}" class="btn btn-xs btn-info btn-block">View</a>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 1px;">
+	                                	        <a href="{{ route('diseases.edit', $disease->id) }}" class="btn btn-xs btn-danger btn-block">Edit</a>
+                                            </div>
+                                        </div>
 	                                </td>
 	                                
 	                            </tr>
@@ -83,13 +89,13 @@
         	<div class="panel panel-danger filterable">
         		<div class="panel-body text-center">
     				<div class="row">
-        				<a href="{{ route('diseases.create') }}" class="btn btn-primary">Add New</a>
+        				<a href="{{ route('diseases.create') }}" class="btn btn-danger btn-block">Add New</a>
         				<hr>
-        				<a href="{{ route('home') }}" class="btn btn-default">Home</a>
+        				<a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
         				<hr>
-        				<a href="#" class="btn btn-default">Tracker</a>
+        				<a href="#" class="btn btn-default btn-block">Tracker</a>
         				<hr>
-        				<a href="#" class="btn btn-default">Tracker</a>
+        				<a href="#" class="btn btn-default btn-block">Tracker</a>
         			</div>
         		</div>
         	</div>

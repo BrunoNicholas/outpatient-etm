@@ -70,15 +70,15 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $case->case_name }}</td>
-                                    <td>{{ $case->disease_id }}</td>
+                                    <td>{{ App\Models\Disease::where('id',$case->disease_id)->first()->disease_name }}</td>
                                     <td>{{ $case->treatment_plan }}</td>
                                     <td><textarea class="form-control" style="border: none;">{{ $case->description }}</textarea></td>
-                                    <td>
+                                    <td style="min-width: 100px;">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="padding: 1px;">
                                                 <a href="{{ route('cases.show', $case->id) }}" class="btn btn-xs btn-block btn-info">Details</a>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="padding: 1px;">
                                                 <a href="{{ route('cases.edit', $case->id) }}" class="btn btn-xs btn-block btn-primary">Edit</a>
                                             </div>
                                         </div>

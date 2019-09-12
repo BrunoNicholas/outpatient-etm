@@ -11,16 +11,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/vendors/datatables/css/scroller.bootstrap.css') }}" />
 @endsection
 @section('location')
-	<h1>The Diseases Stored In The System</h1>
+	<h1>Edit &amp; Update Disease Record</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('home') }}">
                 <i class="livicon" data-name="home" data-size="14" data-color="#333" data-hovercolor="#333"></i> Home
             </a>
         </li>
-        <li class="active">
-            <a href="#">
+        <li>
+            <a href="{{ route('diseases.index') }}">
                 <i class="livicon" data-name="bug" data-size="14" data-color="#333" data-hovercolor="#333"></i> Disease Records
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0)">
+                <i class="livicon" data-name="plus" data-size="14" data-color="#333" data-hovercolor="#333"></i> Edit Records
             </a>
         </li>
     </ol>
@@ -29,11 +34,11 @@
     @include('layouts.includes.notifications')
     <div class="row ">
         <div class="col-md-9 col-sm-8">
-            <div class="panel panel-primary" id="hidepanel1">
+            <div class="panel panel-danger" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Add New Disease Record
+                        Edit Disease Record
                     </h3>
                     <span class="pull-right">
                         <i class="glyphicon glyphicon-chevron-up clickable"></i>
@@ -86,7 +91,7 @@
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
                                     <div class="col-md-4 pull-right">
-                                        <button type="submit" class="btn btn-responsive btn-primary btn-sm btn-block">Update Disease Record</button>
+                                        <button type="submit" class="btn btn-responsive btn-danger btn-sm btn-block">Update Disease Record</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,13 +104,13 @@
             <div class="panel panel-danger filterable">
                 <div class="panel-body text-center">
                     <div class="row">
-                        <a href="{{ route('diseases.index') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ route('diseases.index') }}" class="btn btn-danger btn-block">Back</a>
                         <hr>
-                        <a href="{{ route('home') }}" class="btn btn-default">Home</a>
+                        <a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
                         <hr>
-                        <a href="#" class="btn btn-default">Tracker</a>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
                         <hr>
-                        <a href="#" class="btn btn-default">Tracker</a>
+                        <a href="#" class="btn btn-default btn-block">Tracker</a>
                     </div>
                 </div>
             </div>

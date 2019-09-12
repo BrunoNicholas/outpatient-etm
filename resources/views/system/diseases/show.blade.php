@@ -38,46 +38,46 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <h4>Disease Name</h4>
+                            <div class="col-md-3 text-right" style="padding:0px;">
+                                <h4>Disease Name: </h4>
                             </div>
-                            <div class="col-md-10 text-center">
+                            <div class="col-md-9 text-center" style="padding:0px;">
                                 <span>{{ $disease->disease_name }}</span>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <h4>Disease Description</h4>
+                            <div class="col-md-3 text-right" style="padding:0px;">
+                                <h4>Disease Description: </h4>
                             </div>
-                            <div class="col-md-10 text-center">
-                                <textarea class="form-control" rows="5" style="border: none; background: #fff;" disabled>{{ $disease->description }}</textarea>
+                            <div class="col-md-9 text-center" style="padding:0px;">
+                                <textarea class="form-control text-center" rows="" style="border: none; background: #fff;" disabled>{{ $disease->description }}</textarea>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <h4>Disease Frequest</h4>
+                            <div class="col-md-3 text-right" style="padding:0px;">
+                                <h4>Disease Frequest: </h4>
                             </div>
-                            <div class="col-md-10 text-center">
+                            <div class="col-md-9 text-center" style="padding:0px;">
                                 <span>{{ $disease->frequency }} Stored Occurance(s)</span>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <h4>Disease Status</h4>
+                            <div class="col-md-3 text-right" style="padding:0px;">
+                                <h4>Disease Status: </h4>
                             </div>
-                            <div class="col-md-10 text-center">
+                            <div class="col-md-9 text-center" style="padding:0px;">
                                 <span>{{ $disease->status }}</span>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 text-right">
-                                <h4>Date Added</h4>
+                            <div class="col-md-3 text-right" style="padding:0px;">
+                                <h4>Date Added: </h4>
                             </div>
-                            <div class="col-md-10 text-center">
+                            <div class="col-md-9 text-center" style="padding:0px;">
                                 <span>{{ $disease->created_at }}</span>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         @role(['super-admin','admin'])
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{ route('diseases.index') }}" class="btn btn-primary btn-rounded btn-block"> Back </a>
+                                <a href="{{ route('diseases.index') }}" class="btn btn-danger btn-rounded btn-block"> Back </a>
                             </div>
                             <div class="col-md-6">
                                 <form method="POST" action="{{ route('diseases.destroy', $disease->id) }}">

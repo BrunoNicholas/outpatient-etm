@@ -24,7 +24,7 @@
     @include('layouts.includes.notifications')
     <div class="row ">
         <div class="col-md-9 col-sm-8">
-            <div class="panel panel-primary" id="hidepanel1">
+            <div class="panel panel-danger" id="hidepanel1">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <div class="col-md-12 text-right">
                                     <div class="col-md-4 pull-right">
-                                        <button type="submit" class="btn btn-responsive btn-primary btn-sm btn-block">Add Disease Record</button>
+                                        <button type="submit" class="btn btn-responsive btn-danger btn-sm btn-block">Add Disease Record</button>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
             <div class="panel panel-danger filterable">
                 <div class="panel-body text-center">
                     <div class="row">
-                        <a href="{{ route('diseases.index') }}" class="btn btn-primary btn-block">Back</a>
+                        <a href="{{ route('diseases.index') }}" class="btn btn-danger btn-block">Back</a>
                         <hr>
                         <a href="{{ route('home') }}" class="btn btn-default btn-block">Home</a>
                         <hr>
